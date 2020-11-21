@@ -1,0 +1,1 @@
+Could not find artifact com.alibaba:fastjson:pom:unknown in nexus (http://localhost:8089/nexus/content/groups/public/)
