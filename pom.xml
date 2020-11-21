@@ -12,6 +12,7 @@
         <module>user-service</module>
         <module>shopping-parent</module>
         <module>shopping-api</module>
+        <module>shopping-service-com.hnu.shopping.util</module>
     </modules>
 
     <parent>
