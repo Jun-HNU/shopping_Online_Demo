@@ -3,7 +3,7 @@ package com.hnu.shopping.user.service.impl;
 
 import com.hnu.shopping.bean.UmsMember;
 import com.hnu.shopping.bean.UmsMemberReceiveAddress;
-import com.hnu.shopping.service.UserService;
+import com.hnu.shopping.user.service.UserService;
 import com.hnu.shopping.user.mapper.UmsMemberReceiveAddressMapper;
 import com.hnu.shopping.user.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,34 +51,16 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    @Override
-    public void addUserToken(String token, String memberId) {
 
-    }
 
-    @Override
-    public UmsMember addOauthUser(UmsMember umsMember) {
-        return null;
-    }
 
-    @Override
-    public UmsMember checkOauthUser(UmsMember umsCheck) {
-        return null;
-    }
-
-    @Override
-    public UmsMember getOauthUser(UmsMember umsMemberCheck) {
-        return null;
-    }
-
-    @Override
-    public UmsMemberReceiveAddress getReceiveAddressById(String receiveAddressId) {
-        return null;
-    }
     @Override
     public UmsMember login(UmsMember umsMember) {
         return null;
     }
+
+
+
 
   /*  //@Override
     public UmsMember login(UmsMember umsMember) {
