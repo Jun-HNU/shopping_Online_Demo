@@ -20,6 +20,7 @@ public class UserController {
     UserService userService;
 
     @RequestMapping("getReceiveAddressByMemberId")
+    @ResponseBody
     public List<UmsMemberReceiveAddress> getReceiveAddressByMemberId(String memberId){
 
         List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = userService.getReceiveAddressByMemberId(memberId);
