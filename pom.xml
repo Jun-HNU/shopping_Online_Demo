@@ -18,6 +18,7 @@
         <module>shopping-web-util</module>
         <module>shopping-user</module>
         <module>shopping-swagger</module>
+        <module>shopping-user-module</module>
     </modules>
 
     <parent>
