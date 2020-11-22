@@ -1,18 +1,13 @@
-package com.hnu.shopping.user.service.impl;
+package com.hnu.shopping.service.impl;
 
 
-import com.alibaba.fastjson.JSON;
 import com.hnu.shopping.bean.UmsMember;
 import com.hnu.shopping.bean.UmsMemberReceiveAddress;
 import com.hnu.shopping.service.UserService;
 import com.hnu.shopping.user.mapper.UmsMemberReceiveAddressMapper;
 import com.hnu.shopping.user.mapper.UserMapper;
-import com.hnu.shopping.util.RedisUtil;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import redis.clients.jedis.Jedis;
-import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 

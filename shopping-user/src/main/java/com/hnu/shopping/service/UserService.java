@@ -1,4 +1,4 @@
-package com.hnu.shopping.user.service;
+package com.hnu.shopping.service;
 
 public interface UserService {
     //List<UmsMemberReceiveAddress> getReceiveAddressByMemberId(String memberId);
