@@ -1,4 +1,4 @@
-package com.hnu.shopping.service.impl;
+package com.hnu.shopping.user.service.impl;
 
 
 import com.hnu.shopping.bean.UmsMember;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-//import com.hnu.shopping.user.com.hnu.shopping.service.UserService0;
+//import com.hnu.shopping.user.com.hnu.shopping.user.service.UserService0;
 //import com.hnu.shopping.util.RedisUtil;
 
 @Service

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
-//import com.hnu.shopping.user.com.hnu.shopping.service.UserService;
+//import com.hnu.shopping.user.com.hnu.shopping.user.service.UserService;
 
 @Controller
 public class UserController {
