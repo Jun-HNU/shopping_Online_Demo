@@ -31,7 +31,7 @@
         </dependency>
         <dependency>
             <groupId>jun.hnu</groupId>
-            <artifactId>shopping.service-util</artifactId>
+            <artifactId>shopping-service-util</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

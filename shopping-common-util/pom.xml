@@ -56,7 +56,7 @@
                 <dependency>
                     <groupId>com.alibaba</groupId>
                     <artifactId>dubbo</artifactId>
-                </dependency>-->
+                </dependency>
 
         <dependency>
             <groupId>com.101tec</groupId>
@@ -70,7 +70,7 @@
             </exclusions>
         </dependency>
 
-       <!-- <dependency>
+        <dependency>
             <groupId>com.gitee.reger</groupId>
             <artifactId>spring-boot-starter-dubbo</artifactId>
         </dependency>

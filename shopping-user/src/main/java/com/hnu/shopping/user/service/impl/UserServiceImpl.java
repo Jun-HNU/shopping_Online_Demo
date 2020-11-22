@@ -1,14 +1,18 @@
 package com.hnu.shopping.user.service.impl;
 
 
+import com.alibaba.fastjson.JSON;
 import com.hnu.shopping.bean.UmsMember;
 import com.hnu.shopping.bean.UmsMemberReceiveAddress;
 import com.hnu.shopping.service.UserService;
 import com.hnu.shopping.user.mapper.UmsMemberReceiveAddressMapper;
 import com.hnu.shopping.user.mapper.UserMapper;
 import com.hnu.shopping.util.RedisUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import redis.clients.jedis.Jedis;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -24,10 +28,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UmsMemberReceiveAddressMapper umsMemberReceiveAddressMapper;
 
-    @Autowired
-    RedisUtil redisUtil;
+  /*  @Autowired
+    RedisUtil redisUtil;*/
 
-    //@Override
+    @Override
     public List<UmsMember> getAllUser() {
 
         List<UmsMember> umsMembers = userMapper.selectAll();//userMapper.selectAllUser();
@@ -51,10 +55,6 @@ public class UserServiceImpl implements UserService {
         return umsMemberReceiveAddresses;
     }
 
-    @Override
-    public UmsMember login(UmsMember umsMember) {
-        return null;
-    }
 
     @Override
     public void addUserToken(String token, String memberId) {
@@ -80,9 +80,13 @@ public class UserServiceImpl implements UserService {
     public UmsMemberReceiveAddress getReceiveAddressById(String receiveAddressId) {
         return null;
     }
+    @Override
+    public UmsMember login(UmsMember umsMember) {
+        return null;
+    }
 
-    //@Override
-/*    public UmsMember login(UmsMember umsMember) {
+  /*  //@Override
+    public UmsMember login(UmsMember umsMember) {
         Jedis jedis = null;
         try {
             jedis = redisUtil.getJedis();
