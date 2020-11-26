@@ -24,8 +24,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UmsMemberReceiveAddressMapper umsMemberReceiveAddressMapper;
 
-    @Autowired
-    RedisUtil redisUtil;
+    /*@Autowired
+    RedisUtil redisUtil;*/
 
     @Override
     public List<UmsMember> getAllUser() {
@@ -54,6 +54,8 @@ public class UserServiceImpl implements UserService {
     //public UmsMember login(UmsMember umsMember) { return null}
 
     @Override
+    public UmsMember login(UmsMember umsMember) { return null;}
+   /* @Override
     public UmsMember login(UmsMember umsMember) {
         Jedis jedis = null;
         try {
@@ -77,9 +79,11 @@ public class UserServiceImpl implements UserService {
         }finally {
             jedis.close();
         }
-    }
+    }*/
 
     @Override
+    public void addUserToken(String token, String memberId) {}
+   /* @Override
     public void addUserToken(String token, String memberId) {
         Jedis jedis = redisUtil.getJedis();
 
@@ -87,7 +91,7 @@ public class UserServiceImpl implements UserService {
 
         jedis.close();
     }
-
+*/
     @Override
     public UmsMember addOauthUser(UmsMember umsMember) {
         userMapper.insertSelective(umsMember);

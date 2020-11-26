@@ -1,4 +1,4 @@
-package com.hnu.shopping;
+package com.hnu.shopping.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
