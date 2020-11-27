@@ -14,8 +14,9 @@ public class RedisConfig {
     private int port ;
     @Value("${spring.redis.database:0}")
     private int database;
+    //public RedisUtil getRedisUtil(){
     @Bean
-    public RedisUtil getRedisUtil(){
+    public RedisUtil RedisUtil(){
         if(host.equals("disabled")){
             return null;
         }

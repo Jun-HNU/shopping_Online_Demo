@@ -38,7 +38,6 @@ public class SkuServiceImpl implements SkuService {
     @Autowired
     RedisUtil redisUtil;
 
-
     @Override
     public void saveSkuInfo(PmsSkuInfo pmsSkuInfo) {
 
@@ -88,6 +87,10 @@ public class SkuServiceImpl implements SkuService {
         return skuInfo;
     }
 
+   /* @Override
+    public PmsSkuInfo getSkuById(String skuId,String ip) {
+        return null;
+    }*/
     @Override
     public PmsSkuInfo getSkuById(String skuId,String ip) {
         System.out.println("ip为"+ip+"的同学:"+Thread.currentThread().getName()+"进入的商品详情的请求");
@@ -141,7 +144,6 @@ public class SkuServiceImpl implements SkuService {
         jedis.close();
         return pmsSkuInfo;
     }
-
     @Override
     public List<PmsSkuInfo> getSkuSaleAttrValueListBySpu(String productId) {
 
