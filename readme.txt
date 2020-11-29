@@ -8,8 +8,9 @@
 
 
 
-#36集  92-94
-#npm run dev
+#59集  92-94
+#42-51m没看
+# 在gmail-admin目录下运行 npm run dev
 http://localhost:8080/swagger-ui.html
 http://192.168.5.137:8080/dubbo-admin-2.6.0/
 可以看到要提示用户名密码，默认是root/root

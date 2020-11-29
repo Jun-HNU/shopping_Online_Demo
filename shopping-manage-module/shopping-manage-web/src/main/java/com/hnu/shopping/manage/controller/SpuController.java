@@ -6,6 +6,9 @@ import com.hnu.shopping.bean.PmsProductInfo;
 import com.hnu.shopping.bean.PmsProductSaleAttr;
 import com.hnu.shopping.manage.util.PmsUploadUtil;
 import com.hnu.shopping.service.SpuService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,14 +39,16 @@ public class SpuController {
         return pmsProductSaleAttrs;
     }
 
-
+@Autowired
+    Environment env;
 
     @RequestMapping("fileUpload")
     @ResponseBody
     public String fileUpload(@RequestParam("file") MultipartFile multipartFile){
         // 将图片或者音视频上传到分布式的文件存储系统
         // 将图片的存储路径返回给页面
-        String imgUrl = PmsUploadUtil.uploadImage(multipartFile);
+        String imgip=env.getProperty("tracker_server_IP");
+        String imgUrl = PmsUploadUtil.uploadImage(multipartFile,imgip);
         System.out.println(imgUrl);
         return imgUrl;
     }
