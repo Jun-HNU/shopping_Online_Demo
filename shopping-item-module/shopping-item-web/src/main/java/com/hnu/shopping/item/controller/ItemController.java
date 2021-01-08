@@ -26,8 +26,12 @@ public class ItemController {
 
     @Reference
     SpuService spuService;
-
     @RequestMapping("{skuId}.html")
+    public String item2(@PathVariable String skuId)
+    {
+        return "item";
+    }
+    //@RequestMapping("{skuId}.html")
     public String item(@PathVariable String skuId, ModelMap map, HttpServletRequest request){
 
         String remoteAddr = request.getRemoteAddr();
