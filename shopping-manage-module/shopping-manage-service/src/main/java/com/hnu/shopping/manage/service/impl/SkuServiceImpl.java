@@ -144,6 +144,38 @@ public class SkuServiceImpl implements SkuService {
         jedis.close();
         return pmsSkuInfo;
     }
+
+    @Override
+    public PmsSkuInfo getSkuById(String skuId){
+        PmsSkuInfo pmsSkuInfo = new PmsSkuInfo();
+        // 链接缓存
+        Jedis jedis = redisUtil.getJedis();
+        // 查询缓存
+        String skuKey = "sku:"+skuId+":info";
+        String skuJson = jedis.get(skuKey);
+        if(StringUtils.isNotBlank(skuJson)){
+            pmsSkuInfo = JSON.parseObject(skuJson, PmsSkuInfo.class);
+        }else{
+            pmsSkuInfo =  getSkuByIdFromDb(skuId);
+
+            if(pmsSkuInfo!=null){
+                // mysql查询结果存入redis
+                jedis.set("sku:"+skuId+":info",JSON.toJSONString(pmsSkuInfo));
+            }
+
+        }
+        jedis.close();
+        return pmsSkuInfo;
+    }
+
+   /* @Override
+    public PmsSkuInfo getSkuById(String skuId){
+        PmsSkuInfo pmsSkuInfo=new PmsSkuInfo();
+        pmsSkuInfo.setId(skuId);
+        //pmsSkuInfoMapper.selectOne(pmsSkuInfo);
+        return pmsSkuInfoMapper.selectOne(pmsSkuInfo);
+    }*/
+
     @Override
     public List<PmsSkuInfo> getSkuSaleAttrValueListBySpu(String productId) {
 
