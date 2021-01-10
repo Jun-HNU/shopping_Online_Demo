@@ -119,7 +119,7 @@ public class SkuServiceImpl implements SkuService {
                 pmsSkuInfo =  getSkuByIdFromDb(skuId);
 
                 try {
-                    Thread.sleep(100000);
+                    Thread.sleep(10000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
