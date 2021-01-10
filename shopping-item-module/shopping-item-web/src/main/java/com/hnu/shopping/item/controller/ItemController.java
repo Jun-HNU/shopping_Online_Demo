@@ -26,15 +26,15 @@ public class ItemController {
 
     @Reference
     SpuService spuService;
-    @RequestMapping("{skuId}.html")
+    /*@RequestMapping("{skuId}.html")
     public String item2(@PathVariable String skuId, ModelMap map)
 
     {
         PmsSkuInfo pmsSkuInfo = skuService.getSkuById(skuId);
         map.put("skuInfo",pmsSkuInfo);
         return "item";
-    }
-    /*@RequestMapping("{skuId}.html")
+    }*/
+    @RequestMapping("{skuId}.html")
     public String item(@PathVariable String skuId, ModelMap map, HttpServletRequest request){
 
         String remoteAddr = request.getRemoteAddr();
@@ -69,7 +69,7 @@ public class ItemController {
 
 
         return "item";
-    }*/
+    }
 
     @RequestMapping("index")
     public String index(ModelMap modelMap){

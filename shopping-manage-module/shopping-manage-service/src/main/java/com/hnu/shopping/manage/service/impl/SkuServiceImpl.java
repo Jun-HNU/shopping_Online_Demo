@@ -118,6 +118,12 @@ public class SkuServiceImpl implements SkuService {
 
                 pmsSkuInfo =  getSkuByIdFromDb(skuId);
 
+                try {
+                    Thread.sleep(100000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 if(pmsSkuInfo!=null){
                     // mysql查询结果存入redis
                     jedis.set("sku:"+skuId+":info",JSON.toJSONString(pmsSkuInfo));
