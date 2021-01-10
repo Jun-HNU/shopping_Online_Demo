@@ -8,12 +8,15 @@
 
 
 
-#66集  92-94
+#73集  92-94
 #42-51m没看
 # 在gmail-admin目录下运行 npm run dev
-http://localhost:8080/swagger-ui.html
-http://192.168.5.137:8080/dubbo-admin-2.6.0/
+localhost:8080/swagger-ui.html
+http://192.168.5.138:8080/dubbo-admin-2.6.0/
 可以看到要提示用户名密码，默认是root/root
+/home/zookeeper/bin/zkServer.sh restart
+连接redis:redis-cli -h 192.168.5.138 -p 6379
+
 前端的网址为
 http://localhost:8888/
 

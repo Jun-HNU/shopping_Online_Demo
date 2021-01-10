@@ -35,7 +35,7 @@ public class GmallManageWebApplicationTests {
 
 		String[] uploadInfos = storageClient.upload_file("D:\\IDEA&springboot\\mySSMproject\\shopping-manage-module\\shopping-manage-web\\src\\main\\resources\\test.jpg", "jpg", null);
 
-		String url = "http://192.168.5.137";
+		String url = "http://192.168.5.138";
 
 		for (String uploadInfo : uploadInfos) {
 			url += "/"+uploadInfo;
