@@ -21,6 +21,7 @@
         <module>shopping-user-module</module>
         <module>shopping-manage-module</module>
         <module>shopping-item-module</module>
+        <module>shopping-redisson-test</module>
 
     </modules>
 
