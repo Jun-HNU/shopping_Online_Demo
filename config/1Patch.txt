@@ -1,0 +1,7 @@
+hosts:/ect/hosts
+xcall:/usr/local/bin/xcall
+xsync:/usr/local/bin/xsync
+zoo.cfg:/home/zookeeper/conf/zoo.cfg
+
+
+192.168.5.138	hadoop-103对应的myid是3，它是主机，一般在此台机器上执行命令
