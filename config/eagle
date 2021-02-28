@@ -1,0 +1,24 @@
+cluster1.zk.list=hadoop-101:2181,hadoop-102:2181,hadoop-103:2181
+kafka.eagle.metrics.charts=true
+
+kafka.eagle.driver=com.mysql.jdbc.Driver
+#kafka.eagle.url=dbc:mysql://192.168.5.1:3306/ke?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+#kafka.eagle.url=jdbc:mysql://192.168.5.1:3306/ke?useUnicode=true&ch
+aracterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+kafka.eagle.username=root
+kafka.eagle.password=root
+
+
+
+ke.sh start
+
+
+
+****************************Version 1.3.7***************************************
+* Kafka Eagle Service has started success.
+* Welcome, Now you can visit 'http://192.168.5.138:8048/ke'
+* Account:admin ,Password:123456
+*******************************************************************
+* <Usage> ke.sh [start|status|stop|restart|stats] </Usage>
+* <Usage> https://www.kafka-eagle.org/ </Usage>
+*******************************************************************

@@ -3,5 +3,16 @@ xcall:/usr/local/bin/xcall
 xsync:/usr/local/bin/xsync
 zoo.cfg:/home/zookeeper/conf/zoo.cfg
 
-
+# ssh hadoop-101 "source /etc/profile;/home/zookeeper/bin/zkServer.sh start"
 192.168.5.138	hadoop-103对应的myid是3，它是主机，一般在此台机器上执行命令
+
+命令行：chkconfig iptables off （关闭防火墙）
+
+　　　　service iptables status（查看防火墙状态）
+
+
+
+source /etc/profile使得profile文件生效
+
+创建一个topic
+kafka-topics.sh  --zookeeper hadoop-103:2181 --create --replication-factor 3 --partitions 1 --topic firstTest

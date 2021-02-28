@@ -1,0 +1,1 @@
+xcall  /home/kafka/kafka/bin/kafka-server-stop.sh stop
