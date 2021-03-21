@@ -9,7 +9,7 @@
 
 
 看到121集  92-94
-kafka看到p6:https://www.bilibili.com/video/BV1a4411B7V9?p=6
+kafka看到p26,17分:https://www.bilibili.com/video/BV1a4411B7V9?p=26&spm_id_from=pageDriver
 zookeeper p05https://www.bilibili.com/video/BV1M741137qY?p=5&spm_id_from=pageDriver
 #42-51m没看
 # 在gmail-admin目录下运行 npm run dev
@@ -17,6 +17,7 @@ localhost:8080/swagger-ui.html
 http://192.168.5.138:8080/dubbo-admin-2.6.0/
 可以看到要提示用户名密码，默认是root/root
 /home/zookeeper/bin/zkServer.sh restart
+
 连接redis:redis-cli -h 192.168.5.138 -p 6379
 hadoop-103为服务器
 elk curl 127.0.0.1:9200
@@ -83,3 +84,10 @@ service network   restart
 连接zookeeper
 搭建zookeeper+kafka集群，及其可视化工具
 https://www.cnblogs.com/panwenbin-logs/p/10369402.html
+
+
+dos命令行
+D:\IDEA&springboot\mySSMproject\ZooInspector\build>
+> java -jar zookeeper-dev-ZooInspector.jar
+
+192.168.5.138:2181,192.168.5.131:2181,192.168.5.132:2181

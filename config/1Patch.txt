@@ -10,7 +10,8 @@ zoo.cfg:/home/zookeeper/conf/zoo.cfg
 
 　　　　service iptables status（查看防火墙状态）
 
-
+启动
+windows下启动ZooInspector:java -jar zookeeper-dev-ZooInspector.jar
 
 source /etc/profile使得profile文件生效
 

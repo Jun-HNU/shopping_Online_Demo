@@ -3,8 +3,7 @@ kafka.eagle.metrics.charts=true
 
 kafka.eagle.driver=com.mysql.jdbc.Driver
 #kafka.eagle.url=dbc:mysql://192.168.5.1:3306/ke?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-#kafka.eagle.url=jdbc:mysql://192.168.5.1:3306/ke?useUnicode=true&ch
-aracterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+#kafka.eagle.url=jdbc:mysql://192.168.5.1:3306/ke?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
 kafka.eagle.username=root
 kafka.eagle.password=root
 

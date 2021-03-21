@@ -22,6 +22,7 @@
         <module>shopping-manage-module</module>
         <module>shopping-item-module</module>
         <module>shopping-redisson-test</module>
+        <module>kafka-demo</module>
 
     </modules>
 
