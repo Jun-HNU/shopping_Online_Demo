@@ -15,5 +15,16 @@ windows下启动ZooInspector:java -jar zookeeper-dev-ZooInspector.jar
 
 source /etc/profile使得profile文件生效
 
+./kafka-topics.sh  --zookeeper hadoop-103:2181 --list
+
 创建一个topic
-kafka-topics.sh  --zookeeper hadoop-103:2181 --create --replication-factor 3 --partitions 1 --topic firstTest
+./kafka-topics.sh  --zookeeper hadoop-103:2181 --create --replication-factor 2 --partitions 4 --topic r2p4
+
+
+
+./kafka-console-consumer.sh --zookeeper hadoop-103:2181 --topic firstTest
+
+./kafka-console-producer.sh --broker-list hadoop-103:9092 --topic firstTest
+
+
+./kafka-topics.sh  --zookeeper hadoop-102:2181 --describe --topic first

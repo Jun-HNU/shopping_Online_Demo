@@ -9,7 +9,9 @@
 
 
 看到121集  92-94
-kafka看到p26,17分:https://www.bilibili.com/video/BV1a4411B7V9?p=26&spm_id_from=pageDriver
+kafka看到p27,17分:https://www.bilibili.com/video/BV1a4411B7V9?p=26&spm_id_from=pageDriver
+kafka看到p6 https://www.bilibili.com/video/BV1oK4y1x75C?p=6&spm_id_from=pageDriver
+hadoop看到p30 https://www.bilibili.com/video/BV1Qp4y1n7EN?p=30
 zookeeper p05https://www.bilibili.com/video/BV1M741137qY?p=5&spm_id_from=pageDriver
 #42-51m没看
 # 在gmail-admin目录下运行 npm run dev
@@ -77,7 +79,7 @@ elasticsearch 远程访问：192.168.5.138:9200
 
 kibana 远程访问：192.168.5.138:5601
 
-
+maven
 service network   restart
 
 启动zooke ：/home/zookeeper/bin/zkServer.sh restart
@@ -91,3 +93,6 @@ D:\IDEA&springboot\mySSMproject\ZooInspector\build>
 > java -jar zookeeper-dev-ZooInspector.jar
 
 192.168.5.138:2181,192.168.5.131:2181,192.168.5.132:2181
+
+hadoop 看到25
+https://www.bilibili.com/video/BV1Qp4y1n7EN?p=25

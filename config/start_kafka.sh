@@ -16,6 +16,6 @@ if [ -z "$pid" ];then
 fi
 
 #xcall  /home/kafka/kafka/bin/kafka-server-start.sh /home/kafka/kafka/config/server.properties
-#xcall  /home/kafka/kafka/bin/kafka-server-start.sh -daemon /home/kafka/kafka/config/server.properties
+##xcall  /home/kafka/kafka/bin/kafka-server-start.sh -daemon /home/kafka/kafka/onfig/server.properties
 
 xcall jps | grep 'Kafka'

@@ -1,0 +1,70 @@
+
+ hdfs-site.xml
+ core-site.xml
+ mapred-site.xml
+ yarn-site.xml
+ 以上四个文件所在的目录
+/home/hadoop/hadoop/etc/hadoop
+
+NameNode 和 SecondaryNameNode 不要安装在同一台服务器
+➢  ResourceManager 也很消耗内存，不要和 NameNode、SecondaryNameNode 配置在
+同一台机器上。
+        |hadoop-101 hadoop-102      hadoop-103
+-----------------------------------------------------
+        |NameNode   |               |SecondaryNameNode
+HDFS    |           |               |
+        |DataNode   |DataNode       |DataNode
+------------------------------------------------------
+        |           |ResourceManager|
+YARN                |               |
+        |NodeManager|NodeManager    |NodeManager
+------------------------------------------------------
+
+ResourceManager必须起在hadoop-102上
+
+Starting namenodes on [hadoop-101]
+ERROR: Attempting to operate on hdfs namenode as root
+ERROR: but there is no HDFS_NAMENODE_USER defined. Aborting operation.
+Starting datanodes
+ERROR: Attempting to operate on hdfs datanode as root
+ERROR: but there is no HDFS_DATANODE_USER defined. Aborting operation.
+Starting secondary namenodes [hadoop-103]
+ERROR: Attempting to operate on hdfs secondarynamenode as root
+ERROR: but there is no HDFS_SECONDARYNAMENODE_USER defined. Aborting operation.
+2021-03-24 22:55:44,573 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+1.--->
+对于start-dfs.sh和stop-dfs.sh文件
+HDFS_DATANODE_USER=root
+HADOOP_SECURE_DN_USER=hdfs
+HDFS_NAMENODE_USER=root
+HDFS_SECONDARYNAMENODE_USER=root
+# Licensed to the Apache Softwar
+
+
+YARN_RESOURCEMANAGER_USER=root
+HADOOP_SECURE_DN_USER=yarn
+YARN_NODEMANAGER_USER=root
+
+2.hadoop-env.sh---->
+export JAVA_HOME=自己环境的jdk路径
+
+
+3.
+3.1mkdir /home/hadoop/hadoop/wcinput
+3.2vim wcinput/word.txt /input 输入以下内容：
+
+3.2 将本地的/home/hadoop/hadoop/wcinput/word.txt文件上传到hadoop集群的/input目录。
+hadoop  fs  -put /home/hadoop/hadoop/wcinput/word.txt /input
+
+
+
+3.3 执行  WordCount的demo,生成的内容将出现在/output2目录。
+
+在hadoop-102上 执行以下命令
+hadoop jar /home/hadoop/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.3.jar wordcount /input /output2
+
+
+
+3.4  访问http://hadoop-101:19888/jobhistory查看历史jobs执行情况
+
+
