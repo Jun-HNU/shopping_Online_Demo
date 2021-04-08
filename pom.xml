@@ -23,6 +23,7 @@
         <module>shopping-item-module</module>
         <module>shopping-redisson-test</module>
         <module>kafka-demo</module>
+        <module>HdfsClientDemo</module>
 
     </modules>
 

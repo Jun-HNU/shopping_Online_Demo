@@ -11,8 +11,11 @@
 看到121集  92-94
 kafka看到p27,17分:https://www.bilibili.com/video/BV1a4411B7V9?p=26&spm_id_from=pageDriver
 kafka看到p6 https://www.bilibili.com/video/BV1oK4y1x75C?p=6&spm_id_from=pageDriver
-hadoop看到p30 https://www.bilibili.com/video/BV1Qp4y1n7EN?p=30
+hadoop看到p57 https://www.bilibili.com/video/BV1Qp4y1n7EN?p=49&spm_id_from=pageDriver
 zookeeper p05https://www.bilibili.com/video/BV1M741137qY?p=5&spm_id_from=pageDriver
+ES https://www.bilibili.com/video/BV1Jh41117bi?p=16&spm_id_from=pageDriver
+
+
 #42-51m没看
 # 在gmail-admin目录下运行 npm run dev
 localhost:8080/swagger-ui.html
