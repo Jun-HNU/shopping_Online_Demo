@@ -8,7 +8,8 @@
 
 
 
-看到121集  92-94
+看到124集 ELK集群的搭建 https://www.bilibili.com/video/BV1B4411V7cA?p=124
+92-94
 kafka看到p27,17分:https://www.bilibili.com/video/BV1a4411B7V9?p=26&spm_id_from=pageDriver
 kafka看到p6 https://www.bilibili.com/video/BV1oK4y1x75C?p=6&spm_id_from=pageDriver
 hadoop看到p57 https://www.bilibili.com/video/BV1Qp4y1n7EN?p=49&spm_id_from=pageDriver
@@ -63,27 +64,7 @@ vim /etc/sysconfig/network-scripts/ifcfg-eth0
 BOOTPROTO="static"
 IPADDR=192***** （改为自己想要固定的IP即可）
 
-服务器需要修改的的ip地址
-vim /home/elk/elasticsearch-6.3.1/config/elasticsearch.ym
-network.host:192.168.5.138
 
-vim /home/elk/kibana-6.3.1-linux-x86_64/config
-elasticsearch.url -->192.168.5.138
-
-为elk启动，特意创建了elkuser这个普通用户
-必须先启动 elasticsearch  再启动kibana
-elk必须采用非root用户启动
-su elkuser切换用户
-nohup /home/elk/elasticsearch-6.3.1/bin/elasticsearch &
-nohup /home/elk/kibana-6.3.1-linux-x86_64/bin/kibana  &
-
-
-elasticsearch 远程访问：192.168.5.138:9200
-
-kibana 远程访问：192.168.5.138:5601
-
-maven
-service network   restart
 
 启动zooke ：/home/zookeeper/bin/zkServer.sh restart
 连接zookeeper
