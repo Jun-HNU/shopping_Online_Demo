@@ -1,0 +1,62 @@
+adduser elkuser
+su elkuser
+gpasswd -a elkuser root //将用户elkuser加入到root组
+gpasswd -d elkuser root //将用户elkuser从root组中移出
+
+
+1.install elasticsearch
+Chmod 777 elasticsearch-6.3.1.tar.gz
+tar -zxvf elasticsearch-6.3.1.tar.gz
+vi jvm.options
+-Xms2g
+-Xmx2g
+vi config/elasticsearch.yml
+network.host:hadoop-103
+bootstrap.memory_lock: false
+bootstrap.system_call_filter: false
+vi /etc/security/limits.conf
+* hard nofile 655360
+* soft nofile 131072
+* hard nproc 4096
+* soft nproc 2048
+vi /etc/sysctl.conf
+vm.max_map_count=655360
+fs.file-max=655360
+sysctl -p
+vi /etc/security/limits.d/90-nproc.conf
+max number of threads [1024] for user [es] likely too low, increase to at least [2048]
+
+http://hadoop-103:9200/
+
+2.install kibana
+vim /home/elk/kibana-6.3.1-linux-x86_64/config/kibana.yml
+elasticsearch.username: "elk"
+elasticsearch.password: "elk"
+elasticsearch.url: "http://hadoop-103:9200"
+
+http://hadoop-103:5601/app/kibana#/home?_g=()
+3.配置es 集群
+vim /elasticsearch.yml
+cluster.name: hj-cluster     #必须相同
+# 集群名称（不能重复）
+node.name: els3（必须不同）
+#node.name: els2（必须不同）
+#node.name: els1（必须不同）
+# 节点名称，仅仅是描述名称，用于在日志中区分（自定义）
+#指定了该节点可能成为 master 节点，还可以是数据节点
+node.master: true
+node.data: true
+path.data: /home/elk/elasticsearch-6.3.1/data
+# 数据的默认存放路径（自定义）
+path.logs: /home/elk/elasticsearch-6.3.1/logs
+# 日志的默认存放路径
+network.host: hadoop-103
+# 当前节点的IP地址
+http.port: 9200
+# 对外提供服务的端口
+transport.tcp.port: 9300
+#9300为集群服务的端口
+discovery.zen.ping.unicast.hosts: ["hadoop-101", "hadoop-102"]
+# 集群个节点IP地址，也可以使用域名，需要各节点能够解析
+discovery.zen.minimum_master_nodes: 2
+# 为了避免脑裂，集群中主节点数最少为 半数+1

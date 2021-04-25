@@ -1,6 +1,6 @@
 package com.hnu.shopping;
 
-import com.hnu.shopping.util.RedisUtil;
+import com.hnu.shopping.util.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 //import com.hnu.shopping.user.com.hnu.shopping.user.service.UserService0;
-//import com.hnu.shopping.util.RedisUtil;
+//import com.hnu.shopping.util.RedisUtils;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     UmsMemberReceiveAddressMapper umsMemberReceiveAddressMapper;
 
   /*  @Autowired
-    RedisUtil redisUtil;*/
+    RedisUtils RedisUtils;*/
 
     @Override
     public List<UmsMember> getAllUser() {
@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
     public UmsMember login(UmsMember umsMember) {
         Jedis jedis = null;
         try {
-            jedis = redisUtil.getJedis();
+            jedis = RedisUtils.getJedis();
 
             if(jedis!=null){
                 String umsMemberStr = jedis.get("user:" + umsMember.getPassword() + ":info");

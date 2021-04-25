@@ -8,13 +8,23 @@
 
 
 
-看到118集  92-94
+看到124集 ELK集群的搭建 https://www.bilibili.com/video/BV1B4411V7cA?p=124
+92-94
+kafka看到p27,17分:https://www.bilibili.com/video/BV1a4411B7V9?p=26&spm_id_from=pageDriver
+kafka看到p6 https://www.bilibili.com/video/BV1oK4y1x75C?p=6&spm_id_from=pageDriver
+hadoop看到p57 https://www.bilibili.com/video/BV1Qp4y1n7EN?p=49&spm_id_from=pageDriver
+zookeeper p05https://www.bilibili.com/video/BV1M741137qY?p=5&spm_id_from=pageDriver
+ES https://www.bilibili.com/video/BV1Jh41117bi?p=16&spm_id_from=pageDriver
+
+谷粒商城2020https://www.bilibili.com/video/BV1np4y1C7Yf?p=3&spm_id_from=pageDriver
+
 #42-51m没看
 # 在gmail-admin目录下运行 npm run dev
 localhost:8080/swagger-ui.html
 http://192.168.5.138:8080/dubbo-admin-2.6.0/
 可以看到要提示用户名密码，默认是root/root
 /home/zookeeper/bin/zkServer.sh restart
+
 连接redis:redis-cli -h 192.168.5.138 -p 6379
 hadoop-103为服务器
 elk curl 127.0.0.1:9200
@@ -50,21 +60,34 @@ gmall-order-service 订单服务 8076
 
 gmall-payment 8087
 
-
-服务器需要修改的的ip地址
-vim /home/elk/elasticsearch-6.3.1/config/elasticsearch.ym
-network.host:192.168.5.138
-
-vim /home/elk/kibana-6.3.1-linux-x86_64/config
-elasticsearch.url -->192.168.5.138
-
-为elk启动，特意创建了elkuser这个普通用户
-su elkuser切换用户
-elasticsearch 远程访问：192.168.5.138:9200
-
-kibana 远程访问：192.168.5.138:5601
+vim /etc/sysconfig/network-scripts/ifcfg-eth0
+添加
+BOOTPROTO="static"
+IPADDR=192***** （改为自己想要固定的IP即可）
 
 
 
+启动zooke ：/home/zookeeper/bin/zkServer.sh restart
+连接zookeeper
+搭建zookeeper+kafka集群，及其可视化工具
+https://www.cnblogs.com/panwenbin-logs/p/10369402.html
 
 
+dos命令行
+D:\IDEA&springboot\mySSMproject\ZooInspector\build>
+> java -jar zookeeper-dev-ZooInspector.jar
+
+192.168.5.138:2181,192.168.5.131:2181,192.168.5.132:2181
+
+hadoop 看到25
+https://www.bilibili.com/video/BV1Qp4y1n7EN?p=25
+
+
+.DER .CER，文件是二进制格式，只保存证书，不保存私钥。
+.PEM，一般是文本格式，可保存证书，可保存私钥。
+.CRT，可以是二进制格式，可以是文本格式，与 .DER 格式相同，不保存私钥。
+.PFX .P12，二进制格式，同时包含证书和私钥，一般有密码保护。
+.JKS，二进制格式，同时包含证书和私钥，一般有密码保护。
+————————————————
+版权声明：本文为CSDN博主「博艺」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/sunny2come/article/details/104659941

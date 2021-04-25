@@ -1,0 +1,7 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+192.168.5.128	hadoop-01
+192.168.5.131	hadoop-101
+192.168.5.132	hadoop-102	
+192.168.5.138	hadoop-103

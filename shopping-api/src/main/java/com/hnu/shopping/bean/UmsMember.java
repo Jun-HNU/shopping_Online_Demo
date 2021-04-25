@@ -29,6 +29,7 @@ public class UmsMember implements Serializable{
     private int growth;
     private int luckeyCount;
     private int historyIntegration;
+    private String accessToken;
     /*private String sourceUid;
     private String accessToken;
     private String accessCode;*/
@@ -49,14 +50,6 @@ public class UmsMember implements Serializable{
         this.sourceType = sourceType;
     }
 
- /*   public String getSourceUid() {
-        return sourceUid;
-    }
-
-    public void setSourceUid(String sourceUid) {
-        this.sourceUid = sourceUid;
-    }
-
     public String getAccessToken() {
         return accessToken;
     }
@@ -64,6 +57,15 @@ public class UmsMember implements Serializable{
     public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
     }
+    /*   public String getSourceUid() {
+        return sourceUid;
+    }
+
+    public void setSourceUid(String sourceUid) {
+        this.sourceUid = sourceUid;
+    }
+
+
 
     public String getAccessCode() {
         return accessCode;

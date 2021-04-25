@@ -11,7 +11,7 @@ import com.hnu.shopping.manage.mapper.PmsSkuImageMapper;
 import com.hnu.shopping.manage.mapper.PmsSkuInfoMapper;
 import com.hnu.shopping.manage.mapper.PmsSkuSaleAttrValueMapper;
 import com.hnu.shopping.service.SkuService;
-import com.hnu.shopping.util.RedisUtil;
+import com.hnu.shopping.util.RedisUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.Jedis;
@@ -36,7 +36,7 @@ public class SkuServiceImpl implements SkuService {
     PmsSkuImageMapper pmsSkuImageMapper;
 
     @Autowired
-    RedisUtil redisUtil;
+    RedisUtils RedisUtils;
 
     @Override
     public void saveSkuInfo(PmsSkuInfo pmsSkuInfo) {
@@ -96,7 +96,7 @@ public class SkuServiceImpl implements SkuService {
         System.out.println("ip为"+ip+"的同学:"+Thread.currentThread().getName()+"进入的商品详情的请求");
         PmsSkuInfo pmsSkuInfo = new PmsSkuInfo();
         // 链接缓存
-        Jedis jedis = redisUtil.getJedis();
+        Jedis jedis = RedisUtils.getJedis();
         // 查询缓存
         String skuKey = "sku:"+skuId+":info";
         String skuJson = jedis.get(skuKey);
@@ -155,7 +155,7 @@ public class SkuServiceImpl implements SkuService {
     public PmsSkuInfo getSkuById(String skuId){
         PmsSkuInfo pmsSkuInfo = new PmsSkuInfo();
         // 链接缓存
-        Jedis jedis = redisUtil.getJedis();
+        Jedis jedis = RedisUtils.getJedis();
         // 查询缓存
         String skuKey = "sku:"+skuId+":info";
         String skuJson = jedis.get(skuKey);

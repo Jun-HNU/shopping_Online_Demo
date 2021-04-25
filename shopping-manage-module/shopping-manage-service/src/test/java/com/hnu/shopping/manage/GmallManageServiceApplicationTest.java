@@ -1,6 +1,6 @@
 package com.hnu.shopping.manage;
 
-import com.hnu.shopping.util.RedisUtil;
+import com.hnu.shopping.util.RedisUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +15,13 @@ import redis.clients.jedis.Jedis;
 public class GmallManageServiceApplicationTest {
 
 	@Autowired
-	RedisUtil redisUtil;
+	RedisUtils RedisUtils;
 
 	@Test
 	public void contextLoads() {
-		System.out.println(redisUtil);
+		System.out.println(RedisUtils);
 
-			Jedis jedis = redisUtil.getJedis();
+			Jedis jedis = RedisUtils.getJedis();
 		System.out.println(jedis);
 	}
 
