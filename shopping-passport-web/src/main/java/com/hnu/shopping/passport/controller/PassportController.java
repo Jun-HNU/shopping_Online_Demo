@@ -23,7 +23,6 @@ public class PassportController {
     @Reference
     UserService userService;
 
-/*
     @RequestMapping("vlogin")
     public String vlogin(String code,HttpServletRequest request){
 
@@ -100,7 +99,6 @@ public class PassportController {
 
         return "redirect:http://search.gmall.com:8083/index?token="+token;
     }
-*/
 
     @RequestMapping("verify")
     @ResponseBody
