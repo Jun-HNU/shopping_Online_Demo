@@ -16,6 +16,7 @@ hadoop看到p57 https://www.bilibili.com/video/BV1Qp4y1n7EN?p=49&spm_id_from=pag
 zookeeper p05https://www.bilibili.com/video/BV1M741137qY?p=5&spm_id_from=pageDriver
 ES https://www.bilibili.com/video/BV1Jh41117bi?p=16&spm_id_from=pageDriver
 
+谷粒商城2020https://www.bilibili.com/video/BV1np4y1C7Yf?p=3&spm_id_from=pageDriver
 
 #42-51m没看
 # 在gmail-admin目录下运行 npm run dev
@@ -80,3 +81,13 @@ D:\IDEA&springboot\mySSMproject\ZooInspector\build>
 
 hadoop 看到25
 https://www.bilibili.com/video/BV1Qp4y1n7EN?p=25
+
+
+.DER .CER，文件是二进制格式，只保存证书，不保存私钥。
+.PEM，一般是文本格式，可保存证书，可保存私钥。
+.CRT，可以是二进制格式，可以是文本格式，与 .DER 格式相同，不保存私钥。
+.PFX .P12，二进制格式，同时包含证书和私钥，一般有密码保护。
+.JKS，二进制格式，同时包含证书和私钥，一般有密码保护。
+————————————————
+版权声明：本文为CSDN博主「博艺」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/sunny2come/article/details/104659941

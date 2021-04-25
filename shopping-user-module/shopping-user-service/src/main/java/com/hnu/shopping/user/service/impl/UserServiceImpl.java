@@ -8,10 +8,11 @@ import com.hnu.shopping.bean.UmsMemberReceiveAddress;
 import com.hnu.shopping.service.UserService;
 import com.hnu.shopping.user.mapper.UmsMemberReceiveAddressMapper;
 import com.hnu.shopping.user.mapper.UserMapper;
-import com.hnu.shopping.util.RedisUtil;
+import com.hnu.shopping.util.RedisUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.Jedis;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -24,8 +25,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UmsMemberReceiveAddressMapper umsMemberReceiveAddressMapper;
 
-    /*@Autowired
-    RedisUtil redisUtil;*/
+    @Autowired
+    RedisUtils RedisUtils;
 
     @Override
     public List<UmsMember> getAllUser() {
@@ -41,25 +42,25 @@ public class UserServiceImpl implements UserService {
         // 封装的参数对象
         UmsMemberReceiveAddress umsMemberReceiveAddress = new UmsMemberReceiveAddress();
         umsMemberReceiveAddress.setMemberId(memberId);
-        List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = umsMemberReceiveAddressMapper.select(umsMemberReceiveAddress);
+        //List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = umsMemberReceiveAddressMapper.select(umsMemberReceiveAddress);
 
 
-//       Example example = new Example(UmsMemberReceiveAddress.class);
-//       example.createCriteria().andEqualTo("memberId",memberId);
-//       List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = umsMemberReceiveAddressMapper.selectByExample(example);
+       Example example = new Example(UmsMemberReceiveAddress.class);
+       example.createCriteria().andEqualTo("memberId",memberId);
+       List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = umsMemberReceiveAddressMapper.selectByExample(example);
 
         return umsMemberReceiveAddresses;
     }
 
     //public UmsMember login(UmsMember umsMember) { return null}
 
-    @Override
-    public UmsMember login(UmsMember umsMember) { return null;}
-   /* @Override
+/*    @Override
+    public UmsMember login(UmsMember umsMember) { return null;}*/
+   @Override
     public UmsMember login(UmsMember umsMember) {
         Jedis jedis = null;
         try {
-            jedis = redisUtil.getJedis();
+            jedis = RedisUtils.getJedis();
 
             if(jedis!=null){
                 String umsMemberStr = jedis.get("user:" + umsMember.getPassword()+umsMember.getUsername() + ":info");
@@ -79,19 +80,18 @@ public class UserServiceImpl implements UserService {
         }finally {
             jedis.close();
         }
-    }*/
+    }
 
+    /*@Override
+    public void addUserToken(String token, String memberId) {}*/
     @Override
-    public void addUserToken(String token, String memberId) {}
-   /* @Override
     public void addUserToken(String token, String memberId) {
-        Jedis jedis = redisUtil.getJedis();
+        Jedis jedis = RedisUtils.getJedis();
 
         jedis.setex("user:"+memberId+":token",60*60*2,token);
 
         jedis.close();
     }
-*/
     @Override
     public UmsMember addOauthUser(UmsMember umsMember) {
         userMapper.insertSelective(umsMember);

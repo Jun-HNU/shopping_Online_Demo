@@ -1,7 +1,7 @@
 package com.hnu.shopping.gmallredissontest.redissonTest;
 
 
-import com.hnu.shopping.util.RedisUtil;
+import com.hnu.shopping.util.RedisUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
@@ -15,7 +15,7 @@ import redis.clients.jedis.Jedis;
 public class RedissonController {
 
     @Autowired
-    RedisUtil redisUtil;
+    RedisUtils RedisUtils;
 
     @Autowired
     RedissonClient redissonClient;
@@ -23,7 +23,7 @@ public class RedissonController {
     @RequestMapping("testRedisson")
     @ResponseBody
     public String testRedisson(){
-        Jedis jedis = redisUtil.getJedis();
+        Jedis jedis = RedisUtils.getJedis();
         RLock lock = redissonClient.getLock("lock");// 声明锁
         lock.lock();//上锁
         try {

@@ -24,6 +24,7 @@
         <module>shopping-redisson-test</module>
         <module>kafka-demo</module>
         <module>HdfsClientDemo</module>
+        <module>shopping-passport-web</module>
 
     </modules>
 
