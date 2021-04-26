@@ -23,7 +23,7 @@ public class PassportController {
     @Reference
     UserService userService;
 
-    @RequestMapping("vlogin")
+    /*@RequestMapping("vlogin")
     public String vlogin(String code,HttpServletRequest request){
 
         // 授权码换取access_token
@@ -98,7 +98,7 @@ public class PassportController {
 
 
         return "redirect:http://search.gmall.com:8083/index?token="+token;
-    }
+    }*/
 
     @RequestMapping("verify")
     @ResponseBody
