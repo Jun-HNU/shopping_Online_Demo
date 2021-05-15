@@ -16,7 +16,8 @@ kafka看到p6 https://www.bilibili.com/video/BV1oK4y1x75C?p=6&spm_id_from=pageDr
 hadoop看到p57 https://www.bilibili.com/video/BV1Qp4y1n7EN?p=49&spm_id_from=pageDriver
 zookeeper p05https://www.bilibili.com/video/BV1M741137qY?p=5&spm_id_from=pageDriver
 ES https://www.bilibili.com/video/BV1Jh41117bi?p=16&spm_id_from=pageDriver
-
+IO框架p10 https://www.bilibili.com/video/BV1Tz4y1X7H7?p=10&spm_id_from=pageDriver
+rpc: 24 https://www.bilibili.com/video/BV17Z4y1s7cG?from=search&seid=15445265319622836914
 谷粒商城2020https://www.bilibili.com/video/BV1np4y1C7Yf?p=3&spm_id_from=pageDriver
 servlet教程:https://www.bilibili.com/video/BV1y5411p7kb?from=search&seid=14342678742130979573
 #42-51m没看
