@@ -1,0 +1,22 @@
+#!/bin/bash
+#1 获取输入参数个数，如果没有参数，直接退出
+pcount=$#
+if((pcount==0)); then
+echo no args;
+exit;
+fi
+
+#2 控制台答应要执行的命令是$*
+echo 要执行的命令是$*
+
+
+#3 获取当前用户名称
+user=`whoami`
+
+#4
+#循环执行此命令
+for((i=101;i<104;i++))
+do
+        echo ---------------------hadoop-$i-----------------
+        ssh hadoop-$i $*
+done
