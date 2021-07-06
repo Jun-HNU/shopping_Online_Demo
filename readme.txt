@@ -20,6 +20,9 @@ IO框架p10 https://www.bilibili.com/video/BV1Tz4y1X7H7?p=10&spm_id_from=pageDri
 rpc: 24 https://www.bilibili.com/video/BV17Z4y1s7cG?from=search&seid=15445265319622836914
 谷粒商城2020https://www.bilibili.com/video/BV1np4y1C7Yf?p=3&spm_id_from=pageDriver
 servlet教程:https://www.bilibili.com/video/BV1y5411p7kb?from=search&seid=14342678742130979573
+
+redis p13：https://www.bilibili.com/video/BV1S54y1R7SB?p=13&spm_id_from=pageDriver
+https://www.bilibili.com/video/BV1Tp4y187Jj?from=search&seid=6823215720785951804
 #42-51m没看
 # 在gmail-admin目录下运行 npm run dev
 localhost:8080/swagger-ui.html
@@ -91,5 +94,3 @@ https://www.bilibili.com/video/BV1Qp4y1n7EN?p=25
 .PFX .P12，二进制格式，同时包含证书和私钥，一般有密码保护。
 .JKS，二进制格式，同时包含证书和私钥，一般有密码保护。
 ————————————————
-版权声明：本文为CSDN博主「博艺」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/sunny2come/article/details/104659941
