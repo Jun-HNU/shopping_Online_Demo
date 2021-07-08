@@ -1,0 +1,2 @@
+连接redis:redis-cli -h 192.168.5.138 -p 6379
+用户自己安装的程序默认放在，linux的/usr/loacl/bin下面
