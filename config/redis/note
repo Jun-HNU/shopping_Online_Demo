@@ -1,2 +1,15 @@
+1.
+/etc/init.d/redis start
+/etc/init.d/redis stop
 连接redis:redis-cli -h 192.168.5.138 -p 6379
-用户自己安装的程序默认放在，linux的/usr/loacl/bin下面
+2.用户自己安装的程序默认放在，linux的/usr/loacl/bin下面
+
+
+3.默认不开启的aof，需要手动进行设置！我们只需要将appendonly改为yes就开启了aof
+当前集群中hadoop-3的redis就是这种模式
+重启，redis就可以生效！
+如果这个aof文件有错误，redis是无法启动的，
+redis给我们提供了一个工具redis-check-aof --fix appendonly.aof
+
+如果文件修复成功，重启后就可恢复
+4.info replication查看redis集群的主从配置信息
