@@ -1,3 +1,5 @@
+https://www.bilibili.com/video/BV1S54y1R7SB?p=33&spm_id_from=pageDriver
+
 1.
 /etc/init.d/redis start
 /etc/init.d/redis stop
@@ -30,8 +32,10 @@ master将传送整个数据文件到slave,并完成一次完全同步。
 但是只要重新连接到master,一次完全同步（全量复制）将自动被执行！我们的数据可以在从机中看到。
 
 
-
+1.层层链路架构
 上一个master连接下一个slave,这个时候也可以完成我们的主从复制！
-不过串联的中间节点 点
+不过串联的中间节点，有自子的子节点和master节点，但role仍然是slave,是不能写的。
 
 
+如果主机断开了，执行以下命令，让自己成为主机。
+SLAVEOF no one
