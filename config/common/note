@@ -1,0 +1,4 @@
+1.linux windows共享目录
+Windows :      D:\VM\VMware\Vmshare
+linx hadoop2: /mnt/hgfs/Vmshare-haddop3
+2.vim /etc/profile 添加环境变量

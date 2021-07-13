@@ -1,4 +1,9 @@
-﻿00:0c:29:1c:5d:79
+﻿设定固定ip：第2级 https://www.bilibili.com/video/BV1sb411x73W?p=2&spm_id_from=pageDriver
+service iptables stop 关闭防火墙
+chkconfig iptables off
+reboot.
+
+00:0c:29:1c:5d:79
 00:0c:29:fc:5b:69
 00:0c:29:e4:cf:97
 1.1 修改ip地址,去掉, UUID 和 HWADDR 这两行
