@@ -166,6 +166,8 @@ ZKUI is released under the Apache 2.0 license. Comments, bugs, pull requests, an
 Thanks to Jozef Krajčovič for creating the logo which has been used in the project.
 https://www.iconfinder.com/iconsets/origami-birds
 
+
+http://localhost:9091
 username: admin, pwd: manager (Admin privileges, CRUD operations supported) 
 
 username: appconfig, pwd: appconfig (Readonly privileges, Read operations supported)
