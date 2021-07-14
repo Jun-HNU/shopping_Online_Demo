@@ -1,3 +1,18 @@
+在打开的poershell窗口中，依次输入如下命令：
+
+$client = new-object System.Net.WebClient （按回车）
+
+$client.DownloadFile('#1','#2') （按回车）
+
+其中，在实际应用中：
+
+'#1'需要用网络文件位置替代；
+
+'#2'需要用保存到本地后的路径+文件名替代。
+
+比如，$client.DownloadFile('http://test.com/xxx.html','D:\index.html')
+$client.DownloadFile('https://mirror.checkdomain.de/apache/storm/apache-storm-1.2.3/apache-storm-1.2.3.tar.gz','D:\')
+
 1.linux windows共享目录
 Windows :      D:\VM\VMware\Vmshare
 linx hadoop2: /mnt/hgfs/Vmshare-haddop3
