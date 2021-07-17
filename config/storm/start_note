@@ -1,0 +1,35 @@
+storm启动步骤：
+
+1- 启动zookeeper（storm需要依赖zookeeper）
+
+zkServer.sh start
+
+2- 启动nimbus（只需启动一台主控节点的守护线程，负责在集群中分发代码，对节点分配任务，并监视主机故障）
+
+storm nimbus
+
+3- 启动supervisor（每个工作节点运行supervisor守护进程，负责监听工作节点已经分配的主机作业，启动和停止nimbus已经分配的工作进程）
+
+storm supervisor
+
+4- 启动UI（监控页面，只需启动一台服务器，进程名为core）
+
+storm ui
+
+
+
+5- 删除拓扑
+
+storm kill topname
+
+6- 激活拓扑
+
+storm active topname
+
+7- 不激活拓扑
+
+storm deactive topname
+
+8- 列出拓扑
+
+storm list

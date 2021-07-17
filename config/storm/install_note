@@ -1,0 +1,30 @@
+P2 37 分钟 https://www.bilibili.com/video/BV1sb411x73W?p=2&spm_id_from=pageDriver
+storm 集群搭建
+
+1.
+tar -zxvf apache-storm-1.2.3.tar.gz
+2.添加环境变量,添加环境变量后，/home/storm/apache-storm-1.2.3/bin目录下的脚本就可以在任意目录下使用。
+vim /etc/profile
+添加以下内容
+export STORM_HOME=/home/storm/apache-storm-1.2.3
+export PATH=$STORM_HOME/bin:$PATH
+执行source /etc/profile，使得内容生效
+3.修改 ${STORM_HOME}/conf/storm.yaml 文件，配置如下：
+# Zookeeper集群的主机列表
+storm.zookeeper.servers:
+     - "hadoop-101"
+     - "hadoop-102"
+     - "hadoop-103"
+
+# Nimbus的节点列表
+nimbus.seeds: ["hadoop-103","hadoop-101"]
+
+# Nimbus和Supervisor需要使用本地磁盘上来存储少量状态（如jar包，配置文件等）
+storm.local.dir: "/home/storm/apache-storm-1.2.3/local-dir"
+
+# workers进程的端口，每个worker进程会使用一个端口来接收消息
+supervisor.slots.ports:
+     - 6700
+     - 6701
+     - 6702
+     - 6703
