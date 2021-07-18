@@ -11,7 +11,7 @@ kafka.eagle.password=root
 
 ke.sh start
 
-
+/home/kafka/eagle/bin/ke.sh  start
 
 ****************************Version 1.3.7***************************************
 * Kafka Eagle Service has started success.

@@ -28,3 +28,14 @@ supervisor.slots.ports:
      - 6701
      - 6702
      - 6703
+
+4.1集群启动的脚本放在以下目录：
+/home/clusterBin
+
+check_storm_status.sh  start_storm.sh  stop_storm.sh
+
+4.2执行以下命令启动或者关闭集群
+
+/home/clusterBin/start_storm.sh
+xcall /home/clusterBin/check_storm_status.sh
+xcall /home/clusterBin/stop_storm.sh

@@ -145,6 +145,36 @@
                     </execution>
                 </executions>
             </plugin>
+
+
+
+            <plugin> <!--复制jar包到指定文件目录-->
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy</id><!--需要唯一-->
+                        <phase>package</phase><!--当执行package操作时执行一下任务-->
+                        <configuration>
+                            <tasks><!--任务-->
+                                <!-- 你将要拷贝的位置 -->
+                                <copy todir="D:\VM\VMware\Vmshare\linux-deploy-dir">
+                                    <!-- 从哪里拷贝 -->
+                                    <fileset dir="${project.build.directory}">
+                                        <!-- 拷贝内容 -->
+                                        <include name="*.jar" />
+                                    </fileset>
+                                </copy>
+
+
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             
         </plugins>
     </build>

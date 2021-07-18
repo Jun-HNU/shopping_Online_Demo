@@ -33,3 +33,9 @@ storm deactive topname
 8- 列出拓扑
 
 storm list
+
+9.执行以下命令启动或者关闭集群
+
+  /home/clusterBin/start_storm.sh
+  xcall /home/clusterBin/check_storm_status.sh
+  xcall /home/clusterBin/stop_storm.sh

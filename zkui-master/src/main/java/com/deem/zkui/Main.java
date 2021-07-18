@@ -20,6 +20,7 @@ package com.deem.zkui;
 import com.deem.zkui.dao.Dao;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.Properties;
 import org.eclipse.jetty.annotations.AnnotationConfiguration;
@@ -49,9 +50,30 @@ public class Main {
 
         logger.debug("Starting ZKUI!");
         Properties globalProps = new Properties();
-        File f = new File("E:\\IDEA&springboot\\myIdeaWorkPlace\\shopping_Online_Demo\\zkui-master\\src\\main\\resources\\config.cfg");
-        if (f.exists()) {
-            globalProps.load(new FileInputStream("E:\\IDEA&springboot\\myIdeaWorkPlace\\shopping_Online_Demo\\zkui-master\\src\\main\\resources\\config.cfg"));
+        String configFile=Main.class.getClassLoader().getResource("config.cfg").getPath();
+
+        File f = new File(configFile);
+
+        /**
+         * 一般在IDEA中调试maven项目的时候，获取资源可以通过以下方式来得到url或path，然后建立File对象，但如果要把maven项目打成 jar包之后再使用这种方式获取相应的资源，会报错。
+         * 报错的加载方法：
+         *XXX.calss.getResource(path)
+        XXX.calss.getClassLoader().getResource(path)
+
+         正确的加载方法：
+         XXX.class.getResourceAsStream(path)
+         XXX.calss.getClassLoader().getResourceAsStream(path)
+
+         经验：
+         在jar文件中查找资源和在文件系统中查找资源的方式是不一样的，尽量使用Stream流的方式操作资源文件。
+        */
+        InputStream resourceAsStream = Main.class.getClassLoader().getResourceAsStream("config.cfg");
+        //if (f.exists()) {
+         if (null!=resourceAsStream) {
+            //globalProps.load(new FileInputStream(configFile));
+
+
+            globalProps.load(resourceAsStream);
         } else {
             System.out.println("Please create config.cfg properties file and then execute the program!");
             System.exit(1);
