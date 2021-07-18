@@ -1,0 +1,10 @@
+1.start
+/home/zookeeper/zk_ui/zk_ui_start.sh
+2.stop
+kill -9 `ps -ef|grep zkui |grep -v grep| awk '{print $2}'|head -1` >/home/zookeeper/zk_ui/zkui.log 2>&1 &
+
+3.check status
+ps -ef|grep zkui
+
+4.login -->username: admin, pwd: manager
+http://hadoop-103:9091/home
