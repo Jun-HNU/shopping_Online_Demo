@@ -1,11 +1,10 @@
-
+1.卸载redis
 /etc/init.d/redis stop
 
 rm -rf /usr/local/bin/redis*
 
-tar -zxvf Vmshare-linux-win/redis-6.2.1.tar.gz -C /home/redis/
 
 
-make
-
-make PREFIX=/usr/local/redis install
+4.启动测试
+/etc/init.d/redis start
+/etc/init.d/redis stop

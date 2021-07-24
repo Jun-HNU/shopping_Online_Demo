@@ -14,10 +14,14 @@
 
 - 编译安装
 ```shell
- mv redis-4.0.9 redis
- cd redis
- make && make install
- 以上为安装步骤
+tar -zxvf Vmshare-linux-win/redis-6.2.1.tar.gz -C /home/redis/
+
+cd /home/redis/redis-6.2.1
+make
+
+make PREFIX=/home/redis/bin install
+
+ 以上为安装步骤，若不只当安装路径，默认会安装到/usr/loacl/bin
 用户自己安装的程序默认放在，linux的/usr/loacl/bin下面
 ```
 
@@ -73,12 +77,13 @@ vim /etc/init.d/redis
 PATH=/usr/local/bin:/sbin:/usr/bin:/bin
 
 REDISPORT=6379
-EXEC=/usr/local/bin/redis-server
-REDIS_CLI=/usr/local/bin/redis-cli
+EXEC=/home/redis/bin/redis-server# 执行脚本的地址
+REDIS_CLI=/home/redis/bin/redis-cli# 客户端执行脚本的地址
 
-PIDFILE=/var/run/redis_6379.pid
+#PIDFILE=/var/run/redis.pid 
+PIDFILE=/var/run/redis_6379.pid # 进程id文件地址
+CONF="/home/redis/redis-6.2.1/redis.conf"#配置文件地址
 
-CONF="/home/redis/redis.conf"
 
 case "$1" in  
     start)  
@@ -127,7 +132,7 @@ esac
 
 > EXEC=/usr/local/bin/redis-server # 执行脚本的地址
 >
-> REDIS_CLI=/usr/local/bin/redis-cli # 客户端执行脚本的地址
+> REDIS_CLI=/usr/local/bin/redis-cli 
 >
 > PIDFILE=/var/run/redis.pid # 进程id文件地址
 >
