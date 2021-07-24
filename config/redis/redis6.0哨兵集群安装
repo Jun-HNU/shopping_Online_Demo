@@ -1,12 +1,11 @@
-chkconfig --list ：显示所有运行级系统服务的运行状态信息（on或off）。
 
-chkconfig --add name：增加一项新的服务。但默认所有级别都关闭状态
+/etc/init.d/redis stop
+
+rm -rf /usr/local/bin/redis*
+
+tar -zxvf Vmshare-linux-win/redis-6.2.1.tar.gz -C /home/redis/
 
 
-chkconfig [--level levels] name <on|off|reset>：设置某一服务在指定的运行级是被启动，停止还是重置。
+make
 
-例如，要在3，4，5运行级停止smb服务，则命令如下：
->>chkconfig --level 2345 xxx on
-表示 2，3,4,5 级别为启动
-
-chkconfig --del
+make PREFIX=/usr/local/redis install

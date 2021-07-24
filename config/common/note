@@ -16,4 +16,27 @@ $client.DownloadFile('https://mirror.checkdomain.de/apache/storm/apache-storm-1.
 1.linux windows共享目录
 Windows :      D:\VM\VMware\Vmshare
 linx hadoop2: /mnt/hgfs/Vmshare-haddop3
+ln -s /mnt/hgfs/Vmshare-haddop3 Vmshare-linux-win
 2.vim /etc/profile 添加环境变量
+3.linux 添加/删除开机自启动
+如redis,
+编辑启动文件vim /etc/init.d/redis
+chmod 755 /etc/init.d/redis
+测试启动/etc/init.d/redis start
+配置自启动 chkconfig --add /etc/init.d/redis
+chkconfig redis on
+
+以下常用命令：
+
+chkconfig --list ：显示所有运行级系统服务的运行状态信息（on或off）。
+
+chkconfig --add name：增加一项新的服务。但默认所有级别都关闭状态
+
+
+chkconfig [--level levels] name <on|off|reset>：设置某一服务在指定的运行级是被启动，停止还是重置。
+
+例如，要在3，4，5运行级停止smb服务，则命令如下：
+>>chkconfig --level 2345 xxx on
+表示 2，3,4,5 级别为启动
+
+chkconfig --del
