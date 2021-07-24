@@ -8,3 +8,56 @@ rm -rf /usr/local/bin/redis*
 4.启动测试
 /etc/init.d/redis start
 /etc/init.d/redis stop
+
+3.
+容量不够，redis如何进行扩容？
+并发写操作， redis如何分摊？
+https://blog.csdn.net/xch_yang/article/details/104019552
+4.生产环境使用三台服务器搭建redis哨兵集群，3个redis实例（1主2从）+ 3个哨兵实例。
+生产环境能够保证在哨兵存活两台的情况下，只有一台redis能够继续提供服务（一主两从三哨兵
+
+5.这里我们采用的集群整体架构就是主从结构+哨兵(sentinel)，实现容灾的自动切换。
+一个主节点(master)可拥有多个从节点(slave)，从节点实现对主节点的复制，保证数据同步。
+而哨兵(sentinel)则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一
+旦主节点宕机，哨兵可自动进行故障转移 (failover)、主从切换。接下来就开始搭建这样一个
+集群，首先是主从结构，然后是哨兵模式。
+
+6.在从机hadoop-102和hadoop-101的redis.conf加上以下配置：
+replicaof hadoop-103 6379
+启动从机redis
+redis命令行终端输入以下命令：info replication
+
+7.//端口默认为26379。
+  port:26379
+  //关闭保护模式，可以外部访问。
+  protected-mode:no
+  //设置为后台启动。
+  daemonize:yes
+  //日志文件。
+  logfile "/home/redis/log/sentinel.log”
+  //指定主机IP地址和端口，并且指定当有2台哨兵认为主机挂了，则对主机进行容灾切换。
+  sentinel monitor redisDefaultMasterHostName hadoop-103 6379 2
+  //当在Redis实例中开启了requirepass，这里就需要提供密码。
+  sentinel auth-pass redisDefaultMasterHostNamepwdtest@2019
+  //这里设置了主机多少秒无响应，则认为挂了。
+  sentinel down-after-milliseconds redisDefaultMasterHostName 3000
+  //主备切换时，最多有多少个slave同时对新的master进行同步，这里设置为默认的1。
+  snetinel parallel-syncs redisDefaultMasterHostName 1
+  //故障转移的超时时间，这里设置为三分钟。
+  sentinel failover-timeout redisDefaultMasterHostName 180000
+
+note vim:
+%s/mymaster/redisDefaultMasterHostName/g（等同于 :g/str1/s//str2/g 和 :1,$ s/str1/str2/g ） 替换文中所有 str1 为 str2
+从替换命令可以看到，g 放在命令末尾，表示对搜索字符串的每次出现进行替换；不加 g，表示只对搜索
+mkdir /home/redis/SentinelTmp
+xsync sentinel.conf
+8.
+
+xcall /home/redis/bin/redis-sentinel /home/redis/redis-6.2.1/sentinel.conf
+info sentinel
+
+/home/redis/bin/redis-cli -p 26379
+info sentinel
+
+kill -9 `ps -ef|grep sentinel |grep -v grep| awk '{print $2}'|head -1`
+
