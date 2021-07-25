@@ -1,0 +1,5 @@
+
+xcall ls /var/run/redis_6379.pid
+xcall rm -rf /var/run/redis_6379.pid
+xcall /etc/init.d/redis start
+xcall /etc/init.d/redis stop

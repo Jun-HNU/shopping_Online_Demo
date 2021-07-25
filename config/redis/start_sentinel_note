@@ -1,0 +1,1 @@
+xcall /home/redis/bin/redis-sentinel /home/redis/redis-6.2.1/sentinel.conf

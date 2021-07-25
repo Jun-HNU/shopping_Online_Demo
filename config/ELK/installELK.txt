@@ -2,6 +2,8 @@ adduser elkuser
 su elkuser
 gpasswd -a elkuser root //将用户elkuser加入到root组
 gpasswd -d elkuser root //将用户elkuser从root组中移出
+su root
+---123456
 
 
 1.install elasticsearch

@@ -22,3 +22,5 @@ xcall jps | grep 'Kafka'
 
 /home/clusterBin/start_storm.sh
 xcall /home/clusterBin/check_storm_status.sh
+
+

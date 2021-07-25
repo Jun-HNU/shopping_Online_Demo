@@ -40,3 +40,7 @@ chkconfig [--level levels] name <on|off|reset>：设置某一服务在指定的�
 表示 2，3,4,5 级别为启动
 
 chkconfig --del
+
+
+kill -9 `ps -ef|grep daemon.logviewer |grep -v grep| awk '{print $2}'|head -1`
+tar -zxvf Vmshare-linux-win/elasticsearch-7.13.4-linux-x86_64.tar.gz -C /home/home/elk/

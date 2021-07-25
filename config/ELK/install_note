@@ -1,0 +1,41 @@
+tar -zxvf Vmshare-linux-win/elasticsearch-7.13.4-linux-x86_64.tar.gz -C /home/elk/
+
+chown -R elkuser /home/elk/elasticsearch-7.13.4
+
+3.修改内核参数
+echo "vm.swappiness=0" >> /etc/sysctl.conf
+echo "vm.max_map_count=655350" >> /etc/sysctl.conf
+xcall  /etc/sysctl.conf
+sysctl -p
+4.修改所有节点的linux资源限制，永久生效
+cat /etc/security/limits.conf|grep -v "^#"
+* soft    nofile  1024000
+* hard    nofile  1024000
+* soft    nproc   unlimited
+* hard    nproc   unlimited
+* soft    core    unlimited
+* hard    core    unlimited
+* soft    memlock unlimited
+* hard    memlock unlimited
+ulimit -SHn 1024000
+
+xcall /etc/security/limits.conf
+
+5.
+mkdir -p {data,logs}
+chown -R elkuser logs
+chown -R elkuser data
+5.修改配置文件，添加以下内容：
+cluster.name: ES-cluster
+node.name: f7ec9b80edc5
+node.attr.hotwarm_type: hot
+path.data: /home/elasticsearch/elasticsearch-7.6.0/data
+path.logs: /home/elasticsearch/elasticsearch-7.6.0/data
+network.host: 0.0.0.0
+http.port: 9200
+discovery.seed_hosts: ["127.0.0.1"]
+cluster.initial_master_nodes: ["f7ec9b80edc5"]
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+
+kill -9 `ps -ef|grep elasticsearch |grep -v grep| awk '{print $2}'|head -1`
