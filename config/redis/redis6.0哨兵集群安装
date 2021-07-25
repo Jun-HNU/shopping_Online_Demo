@@ -21,6 +21,35 @@ https://blog.csdn.net/xch_yang/article/details/104019552
 而哨兵(sentinel)则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一
 旦主节点宕机，哨兵可自动进行故障转移 (failover)、主从切换。接下来就开始搭建这样一个
 集群，首先是主从结构，然后是哨兵模式。
+Redis-Sentinel是用于管理Redis集群,该系统执行以下三个任务:
+
+5.1 监控(Monitoring):
+Sentinel会不断地检查你的主服务器和从服务器是否运作正常;
+
+5.2 提醒(Notification):
+当被监控的某个Redis服务器出现问题时,Sentinel可以通过API向管理员或者其他应用程序发送通知;
+
+5.3 自动故障迁移(Automatic failover):
+当一个主服务器不能正常工作时,Sentinel 会开始一次自动故障迁移操作,它会将失效主服务器的其中一个从服务器升级为新的主服务器,并让失效主服务器的其他从服务器改为复制新的主服务器;当客户端试图连接失效的主服务器时,集群也会向客户端返回新主服务器的地址,使得集群可以使用新主服务器代替失效服务器.
+
+
+原理：
+首先解释2个名词:SDOWN和ODOWN.
+
+SDOWN:subjectively down,直接翻译的为”主观”失效,即当前sentinel实例认为某个redis服务为”不可用”状态.
+
+ODOWN:objectively down,直接翻译为”客观”失效,即多个sentinel实例都认为master处于”SDOWN”状态,那么此时master将处于ODOWN,ODOWN可以简单理解为master已经被集群确定为”不可用”,将会开启failover
+
+SDOWN与ODOWN转换过程: i.每个sentinel实例在启动后,都会和已知的slaves/master以及其他sentinels建立TCP连接,并周期性发送PING(默认为1秒),在交互中,如果redis-server无法在”down-after-milliseconds”时间内响应或者响应错误信息,都会被认为此redis-server处于SDOWN状态.
+
+ii.SDOWN的server为master,那么此时sentinel实例将会向其他sentinel间歇性(一秒)发送”is-master-down-by-addr ”指令并获取响应信息,如果足够多的sentinel实例检测到master处于SDOWN,那么此时当前sentinel实例标记master为ODOWN…其他sentinel实例做同样的交互操作.配置项”sentinel monitor ”,如果检测到master处于SDOWN状态的slave个数达到,那么此时此sentinel实例将会认为master处于ODOWN.
+
+每个sentinel实例将会间歇性(10秒)向master和slaves发送”INFO”指令,如果master失效且没有新master选出时,每1秒发送一次”INFO”;”INFO”的主要目的就是获取并确认当前集群环境中slaves和master的存活情况.
+
+经过上述过程后,所有的sentinel对master失效达成一致后,开始failover.
+
+Sentinel与slaves”自动发现”机制:
+在sentinel的配置文件中,都指定了port,此port就是sentinel实例侦听其他sentinel实例建立链接的端口.在集群稳定后,最终会每个sentinel实例之间都会建立一个tcp链接,此链接中发送”PING”以及类似于”is-master-down-by-addr”指令集,可用用来检测其他sentinel实例的有效性以及”ODOWN”和”failover”过程中信息的交互.在sentinel之间建立连接之前,sentinel将会尽力和配置文件中指定的master建立连接.sentinel与master的连接中的通信主要是基于pub/sub来发布和接收信息,发布的信息内容包括当前sentinel实例的侦听端口.
 
 6.在从机hadoop-102和hadoop-101的redis.conf加上以下配置：
 replicaof hadoop-103 6379
@@ -33,10 +62,11 @@ redis命令行终端输入以下命令：info replication
   protected-mode:no
   //设置为后台启动。
   daemonize:yes
+  dir /home/redis/SentinelTmp
   //日志文件。
   logfile "/home/redis/log/sentinel.log”
   //指定主机IP地址和端口，并且指定当有2台哨兵认为主机挂了，则对主机进行容灾切换。
-  sentinel monitor redisDefaultMasterHostName hadoop-103 6379 2
+  sentinel monitor mymaster hadoop-103 6379 2
   //当在Redis实例中开启了requirepass，这里就需要提供密码。
   sentinel auth-pass redisDefaultMasterHostNamepwdtest@2019
   //这里设置了主机多少秒无响应，则认为挂了。
@@ -45,6 +75,8 @@ redis命令行终端输入以下命令：info replication
   snetinel parallel-syncs redisDefaultMasterHostName 1
   //故障转移的超时时间，这里设置为三分钟。
   sentinel failover-timeout redisDefaultMasterHostName 180000
+  SENTINEL resolve-hostnames yes
+  SENTINEL announce-hostnames yes
 
 note vim:
 %s/mymaster/redisDefaultMasterHostName/g（等同于 :g/str1/s//str2/g 和 :1,$ s/str1/str2/g ） 替换文中所有 str1 为 str2
@@ -58,6 +90,6 @@ info sentinel
 
 /home/redis/bin/redis-cli -p 26379
 info sentinel
-
+关闭sentinel
 kill -9 `ps -ef|grep sentinel |grep -v grep| awk '{print $2}'|head -1`
 
