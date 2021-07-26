@@ -35,3 +35,5 @@ xcall  /home/elk/elasticsearch-7.13.4/start_es.sh
 xcall  /home/elk/elasticsearch-7.13.4/stop_es.sh
 xcall ps -ef|grep elasticsearch |grep -v grep
 xcall ps -ef|grep elasticsearch |grep -v grep
+
+!!!!关注中间件开源web可视化工具。并贡献代码
