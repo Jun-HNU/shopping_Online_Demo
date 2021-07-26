@@ -1,6 +1,19 @@
+
 tar -zxvf Vmshare-linux-win/elasticsearch-7.13.4-linux-x86_64.tar.gz -C /home/elk/
+为elk启动，特意创建了elkuser这个普通用户
+必须先启动 elasticsearch  再启动kibana
+elk必须采用非root用户启动
+su elkuser切换用户
+
+adduser elkuser
+su elkuser
+gpasswd -a elkuser root //将用户elkuser加入到root组
+gpasswd -d elkuser root //将用户elkuser从root组中移出
+su root
+---123456
 
 chown -R elkuser /home/elk/elasticsearch-7.13.4
+
 
 3.修改内核参数
 echo "vm.swappiness=0" >> /etc/sysctl.conf
@@ -19,23 +32,27 @@ cat /etc/security/limits.conf|grep -v "^#"
 * hard    memlock unlimited
 ulimit -SHn 1024000
 
-xcall /etc/security/limits.conf
+或者
+vi /etc/security/limits.conf
+* hard nofile 655360
+* soft nofile 131072
+* hard nproc 4096
+* soft nproc 2048
+vi /etc/sysctl.conf
+vm.max_map_count=655360
+fs.file-max=655360
+sysctl -p
+vi /etc/security/limits.d/90-nproc.conf
+max number of threads [1024] for user [es] likely too low, increase to at least [2048]
 
 5.
 mkdir -p {data,logs}
 chown -R elkuser logs
 chown -R elkuser data
 5.修改配置文件，添加以下内容：
-cluster.name: ES-cluster
-node.name: f7ec9b80edc5
-node.attr.hotwarm_type: hot
-path.data: /home/elasticsearch/elasticsearch-7.6.0/data
-path.logs: /home/elasticsearch/elasticsearch-7.6.0/data
-network.host: 0.0.0.0
-http.port: 9200
-discovery.seed_hosts: ["127.0.0.1"]
-cluster.initial_master_nodes: ["f7ec9b80edc5"]
-http.cors.enabled: true
-http.cors.allow-origin: "*"
+vim  elasticsearch.yml
+vi jvm.options
+-Xms2g
+-Xmx2g
 
-kill -9 `ps -ef|grep elasticsearch |grep -v grep| awk '{print $2}'|head -1`
+

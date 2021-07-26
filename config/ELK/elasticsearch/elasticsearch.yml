@@ -1,0 +1,47 @@
+#配置es的集群名称，同一个集群的集群名必须相同
+cluster.name: cloud_es
+#节点名，每个节点的节点名必须不同
+node.name: node01_r1
+
+#设置当前节点是否为主节点,是否存能放数据.
+ # 如果一个节点即有成为主节点的资格，又存储数据，这个时候如果某个节点被选举成为了真正的主节点，那么他还要存储数据，这样对于这个节点的压力就比较大了。elasticsearch默认每个节点都是这样的配置，在测试环境下这样做没问题。实际工作中建议不要这样设置，这样相当于主节点和数据节点的角色混合到一块了。
+ # 生产环境一台服务器部署两个节点, 一个只为主节点 一个只为数据节点。或者3台以上主节点,其他全为数据节点。
+#主节点
+node.master: true
+#数据节点
+node.data: true
+
+#数据存放目录，可以设置多个存储路径，用逗号隔开
+path.data: /export/servers/es/elasticsearch-7.7.0_r1/datas
+#日志存放目录，可以设置多个日志路径，用逗号隔开
+path.logs: /export/servers/es/elasticsearch-7.7.0_r1/logs
+
+#服务器ip
+network.host: ${HOSTNAME}
+#设置节点间交互的tcp端口，默认是9300
+transport.tcp.port: 9301
+#设置对外服务的http端口，默认为9200
+http.port: 9201
+
+#设置这个参数来保证集群中的节点可以知道其它N个有master资格的节点。默认为1，对于大的集群来说，可以设置大一点的值（2-4）
+discovery.zen.minimum_master_nodes: 2
+#自动发现设置，配置之后集群的主机之间可以自动发现。对应旧版中的discovery.zen.ping.unicast.hosts。
+discovery.seed_hosts: ["hadoop-101", "hadoop-102","hadoop-103"]
+#设置一系列符合主节点条件的节点的主机名或 IP 地址来引导启动集群。如果手动设置了node.name，还可以设置为此节点的名称。
+cluster.initial_master_nodes: ["hadoop-101", "hadoop-102","hadoop-103"] # 确保当前节点是主节点
+
+#是否支持跨域，默认为false
+http.cors.enabled: true
+#当设置允许跨域，默认为*,表示支持所有域名，
+http.cors.allow-origin: "*"
+
+#默认为false，这项使用默认配置，会导致硬盘频繁读，IOPS变高。设置true锁定物理内存地址，防止es内存被交换出去，也就是避免es使用swap交换分区。
+bootstrap.memory_lock: true
+#开启seccomp安全机制，seccomp能使一个进程进入到一种“安全”运行模式，该模式下的进程只能调用4种系统调用（system call），即 read(), write(), exit() 和 sigreturn()，否则进程便会被终止。
+#centos6.x操作系统不支持SecComp只能为false，centos7.x操作系统可以设置成true
+bootstrap.system_call_filter: true
+
+#默认值是false，如果设置为true，那么就不允许将一个primary shard和replica shard分配到同一个物理机上，也许这个物理机上启动了多个es实例。
+cluster.routing.allocation.same_shard.host: true
+#设置一台机子能运行的节点数目，一般采用默认的1即可，因为我们一般也只在一台机子上部署一个节点。
+node.max_local_storage_nodes: 2

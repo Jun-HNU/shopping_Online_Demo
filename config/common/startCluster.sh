@@ -22,5 +22,16 @@ xcall jps | grep 'Kafka'
 
 /home/clusterBin/start_storm.sh
 xcall /home/clusterBin/check_storm_status.sh
+xcall /home/clusterBin/stop_storm.sh
 
 
+xcall ls /var/run/redis_6379.pid
+xcall rm -rf /var/run/redis_6379.pid
+xcall /etc/init.d/redis start
+xcall /etc/init.d/redis stop
+xcall /home/redis/bin/redis-sentinel /home/redis/redis-6.2.1/sentinel.conf
+
+xcall  /home/elk/elasticsearch-7.13.4/start_es.sh
+xcall  /home/elk/elasticsearch-7.13.4/stop_es.sh
+xcall ps -ef|grep elasticsearch |grep -v grep
+xcall ps -ef|grep elasticsearch |grep -v grep
