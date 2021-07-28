@@ -44,3 +44,6 @@ chkconfig --del
 
 kill -9 `ps -ef|grep daemon.logviewer |grep -v grep| awk '{print $2}'|head -1`
 tar -zxvf Vmshare-linux-win/elasticsearch-7.13.4-linux-x86_64.tar.gz -C /home/home/elk/
+
+
+cat /etc/redhat-release

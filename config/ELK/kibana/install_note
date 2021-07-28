@@ -1,0 +1,5 @@
+tar -zxvf Vmshare-linux-win/kibana-7.13.4-linux-x86_64.tar.gz -C /home/elk/
+chown -R elkuser /home/elk/kibana-7.13.4-linux-x86_64
+su elkuser -c "sh /home/elk/kibana-7.13.4-linux-x86_64/bin/kibana"
+
+https://blog.csdn.net/poxiaonie/article/details/74059023?utm_medium=referral
