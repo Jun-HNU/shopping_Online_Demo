@@ -35,3 +35,4 @@ ps -ef|grep nginx
 kill -QUIT 30763
 设置开机启动
 [root@iZ2zednyjjxxq7k3i2dwsfZ nginx-1.12.2]# vim /etc/rc.d/rc.local
+/usr/bin
