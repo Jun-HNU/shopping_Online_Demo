@@ -1,0 +1,37 @@
+上传nginx压缩包到/usr/local目录下，解压
+tar -zxvf nginx-1.12.2.tar.gz
+添加fastdfs-nginx-module模块
+
+./configure \
+--prefix=/usr/local/nginx \
+--pid-path=/var/run/nginx/nginx.pid \
+--lock-path=/var/lock/nginx.lock \
+--error-log-path=/var/log/nginx/error.log \
+--http-log-path=/var/log/nginx/access.log \
+--with-http_gzip_static_module \
+--http-client-body-temp-path=/var/temp/nginx/client \
+--http-proxy-temp-path=/var/temp/nginx/proxy \
+--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \
+--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \
+--http-scgi-temp-path=/var/temp/nginx/scgi \
+--add-module=/usr/local/fastdfs-nginx-module/src
+
+
+编译
+[root@localhost nginx-1.12.2]# make
+安装
+[root@localhost nginx-1.12.2]# make install
+此时nginx 会被默认安装在/usr/local/nginx/下
+
+编辑nginx.conf
+vim /usr/local/nginx/conf/nginx.conf
+
+修改server_name  hadoop-103;
+启动nginx
+/usr/local/nginx/sbin/nginx
+/usr/local/nginx/sbin/nginx -s stop
+
+ps -ef|grep nginx
+kill -QUIT 30763
+设置开机启动
+[root@iZ2zednyjjxxq7k3i2dwsfZ nginx-1.12.2]# vim /etc/rc.d/rc.local
