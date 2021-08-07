@@ -1,1 +1,5 @@
+
 https://elasticstack.blog.csdn.net/article/details/104432643
+tar -zxvf Vmshare-linux-win/filebeat-7.13.4-linux-x86_64.tar.gz -C /home/elk/
+
+/home/elk/filebeat-7.13.4-linux-x86_64/filebeat filebeat.yml 2>&1 & >/home/elk/filebeat-7.13.4-linux-x86_64/filebeat_start.log

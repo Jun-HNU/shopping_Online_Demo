@@ -1,3 +1,13 @@
 https://www.cnblogs.com/xikui/p/11792618.html
 https://blog.csdn.net/pseudonym_/article/details/85297095
 https://blog.csdn.net/yuezhilangniao/article/details/111406740
+视频：
+https://www.bilibili.com/video/BV1of4y1R7ST?p=16&spm_id_from=pageDriver
+
+Filebeat负责从web服务器上实时抓取数据，当log文件发生变化时，将文件内容吐给kafka。
+
+Kafka是消息队列，主要作用是在filebeat和logstash之间做缓存，避免因写入logstash的数据量过大，导致数据丢失。
+
+Zookeeper是kafka的分发系统，他负责维护整个kafka集群的负载均衡，在部署的时候，每个kafka节点上都要单独安装zookeeper，同时要保证zookeeper之间能够互相通信（2181端口）。
+
+Logstash是日志处理器，也是整个elk系统的核心。负责来自kafka的日志处理，然后把处理过的日志吐给elasticsearch。需要注意的是，经logstash处理过的日志都是json格式的。

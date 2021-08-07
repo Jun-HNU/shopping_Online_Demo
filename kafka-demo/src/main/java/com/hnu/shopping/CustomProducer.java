@@ -30,7 +30,7 @@ public static void main(String[] args) throws ExecutionException,InterruptedExce
             KafkaProducer<>(props);
     for (int i = 0; i < 10; i++) {
         //producer.send(new ProducerRecord<String, String>("first", Integer.toString(i), Integer.toString(i)));
-        producer.send(new ProducerRecord<>("firstTest","value"+i));
+        producer.send(new ProducerRecord<>("firstTest2","value"+i));
 
     }
     producer.close();

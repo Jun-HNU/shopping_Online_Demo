@@ -32,3 +32,10 @@ XX:ConcGCThreads=5 -XX:InitiatingHeapOccupancyPercent=70"
 export JMX_PORT="9999"
 #export KAFKA_HEAP_OPTS="-Xmx1G -Xms1G"
 fi
+
+
+kafka Tool
+spring.kafka.bootstrap-servers=hadoop-101:9092,hadoop-102:9092,hadoop-103:9092
+
+zookeer host hadoop-101
+port :2181
