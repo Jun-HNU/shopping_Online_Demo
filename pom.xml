@@ -25,6 +25,7 @@
         <module>kafka-demo</module>
         <module>HdfsClientDemo</module>
         <module>shopping-passport-web</module>
+        <module>ELK-client</module>
 
     </modules>
 
