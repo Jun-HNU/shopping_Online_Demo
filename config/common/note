@@ -47,3 +47,12 @@ tar -zxvf Vmshare-linux-win/elasticsearch-7.13.4-linux-x86_64.tar.gz -C /home/ho
 
 
 cat /etc/redhat-release
+
+
+关于java spring
+1.java bean 和xml的对比
+
+javabean的返回值，是xml的class类型，java bean定义时的的函数名对应xml的id.
+
+2.springboot在整合中间件时，先去看看org.springframework.boot.autoconfigure包下
+的源码，有助于整合。

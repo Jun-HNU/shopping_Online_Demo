@@ -1,1 +1,2 @@
 GET _cat/indices?v
+7之后类型名称默认是_doc,

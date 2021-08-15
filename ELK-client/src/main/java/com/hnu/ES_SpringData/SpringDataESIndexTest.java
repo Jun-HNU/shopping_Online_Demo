@@ -3,6 +3,7 @@ package com.hnu.ES_SpringData;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -12,7 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class SpringDataESIndexTest {
     @Autowired
     private ElasticsearchRestTemplate elasticsearchRestTemplate;
-
+    @Value("${elasticsearch.scheme}")
+    private String scheme;
     //创建索引并增加映射配置
     @Test
     public void createIndex(){
