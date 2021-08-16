@@ -14,12 +14,17 @@ import org.springframework.beans.factory.annotation.Value;
 //import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+
+import java.util.Arrays;
+import java.util.Objects;
 
 //import java.util.Arrays;
 //import java.util.Objects;
 
 //@ConfigurationProperties(prefix = "elasticsearch")
 @Configuration
+@PropertySource(value = "classpath:application.properties")
 //@Data
 public class ElasticsearchClientConfig {
 
@@ -30,26 +35,25 @@ public class ElasticsearchClientConfig {
     private String scheme;
     @Value("${elasticsearch.cluster-nodes}")
     private String[] ipAddress;
-    @Value("${es.conRequTout}")
+    @Value("${es_conRequTout}")
     private String connectionRequestTimeout;
     @Value("${elasticsearch.socket-timeout}")
     private String socketTimeout;
     @Value("${elasticsearch.connect-timeout}")
     private String connectTimeout;
-
-@Bean(name="elasticsearchClien")
+    @Bean(name="Client")
    public RestHighLevelClient elasticsearchClient() {
         RestClientBuilder builder = RestClient.builder(new HttpHost(host, port));
         RestHighLevelClient restHighLevelClient = new RestHighLevelClient(builder);
         return restHighLevelClient;
     }
 
-    /*//@Bean
+    @Bean
     public RestClientBuilder restClientBuilder() {
-        *//*HttpHost[] hosts = Arrays.stream(ipAddress)
+        HttpHost[] hosts = Arrays.stream(ipAddress)
                 .map(this::makeHttpHost)
                 .filter(Objects::nonNull)
-                .toArray(HttpHost[]::new);*//*
+                .toArray(HttpHost[]::new);
         RestClientBuilder restClientBuilder = RestClient.builder(new HttpHost(host, port),
                 new HttpHost("hadoop-101", port)
         ,new HttpHost("hadoop-101", port));
@@ -73,9 +77,9 @@ public class ElasticsearchClientConfig {
             }
         });
         return restClientBuilder;
-    }*/
+    }
 
-    //@Bean(name = "highLevelClient")
+    @Bean(name = "highLevelClient")
     public RestHighLevelClient highLevelClient(@Autowired RestClientBuilder restClientBuilder) {
         // TODO 此处可以进行其它操作
         return new RestHighLevelClient(restClientBuilder);
@@ -86,7 +90,7 @@ public class ElasticsearchClientConfig {
      * @param s
      * @return
      */
-    /*private HttpHost makeHttpHost(String s) {
+    private HttpHost makeHttpHost(String s) {
         String[] address = s.split(":");
         if (address.length == ADDRESS_LENGTH) {
             String ip = address[0];
@@ -95,5 +99,5 @@ public class ElasticsearchClientConfig {
         } else {
             return null;
         }
-    }*/
+    }
 }

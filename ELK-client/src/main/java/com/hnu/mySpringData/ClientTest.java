@@ -15,22 +15,14 @@ import org.springframework.context.annotation.Bean;
 
 import java.io.IOException;
 
-//@SpringBootTest
+@SpringBootTest
 public class ClientTest {
 
-    private String host="hadoop-101" ;
-    private Integer port =9200;
-
-
     @Autowired
-    @Qualifier("elasticsearchClient2")
+    @Qualifier("Client")
     private RestHighLevelClient client;
-    @Bean
-    public RestHighLevelClient elasticsearchClient2() {
-        RestClientBuilder builder = RestClient.builder(new HttpHost(host, port));
-        RestHighLevelClient restHighLevelClient = new RestHighLevelClient(builder);
-        return restHighLevelClient;
-    }
+//
+
 
     @Test
     public void testCreateIndex() throws IOException {
@@ -38,4 +30,5 @@ public class ClientTest {
         CreateIndexResponse indexResponse = client.indices().create(request, RequestOptions.DEFAULT);
         System.out.println(indexResponse);
     }
+
 }
