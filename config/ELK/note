@@ -2,7 +2,7 @@ https://www.cnblogs.com/xikui/p/11792618.html
 https://blog.csdn.net/pseudonym_/article/details/85297095
 https://blog.csdn.net/yuezhilangniao/article/details/111406740
 视频：p13
-https://www.bilibili.com/video/BV17a4y1x7zq?p=10&spm_id_from=pageDriver
+https://www.bilibili.com/video/BV17a4y1x7zq?p=14&spm_id_from=pageDriver
 
 Filebeat负责从web服务器上实时抓取数据，当log文件发生变化时，将文件内容吐给kafka。
 
