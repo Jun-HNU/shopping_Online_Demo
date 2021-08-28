@@ -13,7 +13,7 @@ public class KafkaProducer {
    @Autowired
     private KafkaTemplate<String, Object> kafkaTemplate;
     // 发送消息
-    @GetMapping("/kafka/normal/{message}")
+    @GetMapping("/kafka/norma  l/{message}")
     public void sendMessage1(@PathVariable("message") String normalMessage) {
         kafkaTemplate.send("topic1", normalMessage);
 
