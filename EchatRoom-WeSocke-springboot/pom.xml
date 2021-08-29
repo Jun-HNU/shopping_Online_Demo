@@ -4,7 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.hnu</groupId>
     <artifactId>echat</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
+    <modules>
+        <module>WebSocketServer</module>
+        <module>WebSocketClient</module>
+    </modules>
     <name>echat</name>
     <description>在线聊天室SpringBoot版</description>
 
