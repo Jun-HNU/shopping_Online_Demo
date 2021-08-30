@@ -11,6 +11,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>web_socket</title>
 
+   <!-- <script type="text/javascript" src="${baseurl}static/js/jquery-2.1.1.js"></script>-->
     <script type="text/javascript" src="${baseurl}static/js/jquery-2.1.1.js"></script>
     <style type="text/css">
     .connector {width: 500px;}
@@ -26,6 +27,8 @@ Welcome
 <button onclick="closeWebSocket()">关闭WebSocket连接</button>
 <hr/>
 <div id="message"></div>
+<script src="/js/jquery.js"></script>
+<script src="/js/sockjs.js"></script>
 </body>
 <script type="text/javascript">
     var websocket = null;
@@ -34,7 +37,8 @@ Welcome
     //判断当前浏览器是否支持WebSocket
     if ('WebSocket' in window) {
         console.info("浏览器支持Websocket");
-        websocket = new WebSocket('ws://'+host+'/${baseurl}/ws/server');
+          websocket = new WebSocket('ws://localhost:8085/ws/server');
+      <!--  websocket = new WebSocket('ws://'+host+'/${baseurl}/ws/server');-->
     } else {
         console.info('当前浏览器 Not support websocket');
     }
