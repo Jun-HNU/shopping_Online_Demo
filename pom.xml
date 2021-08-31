@@ -27,7 +27,7 @@
         <module>shopping-passport-web</module>
         <module>ELK-client</module>
         <module>RedisDemo</module>
-        <module>webSocketClient</module>
+        <module>strom-demo</module>
 
     </modules>
 
