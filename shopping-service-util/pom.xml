@@ -19,11 +19,11 @@
     <dependencies>
 
 
-       <!-- <dependency>
+        <dependency>
             <groupId>jun.hnu</groupId>
             <artifactId>shopping-common-util</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

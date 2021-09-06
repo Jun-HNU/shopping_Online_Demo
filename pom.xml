@@ -64,7 +64,7 @@
         <beanUtils.version>1.9.3</beanUtils.version>
         <swagger.version>2.4.0</swagger.version>
     </properties>
-
+<dependencyManagement>
 
         <dependencies>
 
@@ -197,7 +197,7 @@
 
 
         </dependencies>
-
+</dependencyManagement>
 
 
 
