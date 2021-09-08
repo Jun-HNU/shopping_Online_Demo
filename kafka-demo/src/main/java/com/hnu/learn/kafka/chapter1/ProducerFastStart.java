@@ -3,8 +3,10 @@ package com.hnu.learn.kafka.chapter1;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
 
 import java.util.Properties;
+import java.util.concurrent.Future;
 
 /**
  * Kafka 消息生产者
@@ -33,9 +35,11 @@ public class ProducerFastStart {
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
         ProducerRecord<String, String> record = new ProducerRecord<>(topic, "Kafka-demo-001", "hello, Kafka!");
         try {
-            producer.send(record);
-            //RecordMetadata recordMetadata = producer.send(record).get();
-            //System.out.println("part:" + recordMetadata.partition() + ";topic:" + recordMetadata.topic());
+            Future<RecordMetadata> send = producer.send(record);
+            RecordMetadata recordMetadata = send.get();
+            System.out.println("partition:" + recordMetadata.partition()
+                    + ";topic:" + recordMetadata.topic()
+                    + ";offset:" + recordMetadata.offset());
         } catch (Exception e) {
             e.printStackTrace();
         }
