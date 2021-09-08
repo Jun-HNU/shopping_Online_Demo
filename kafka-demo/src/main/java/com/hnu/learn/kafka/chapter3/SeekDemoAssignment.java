@@ -1,6 +1,6 @@
 package com.hnu.learn.kafka.chapter3;
 
-import com.heima.kafka.ConsumerClientConfig;
+import com.hnu.learn.kafka.ConsumerClientConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;

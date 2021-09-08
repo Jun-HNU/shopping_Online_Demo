@@ -1,6 +1,6 @@
 package com.hnu.learn.kafka.chapter3;
 
-import com.heima.kafka.chapter2.Company;
+import com.hnu.learn.kafka.chapter2.Company;
 import io.protostuff.ProtostuffIOUtil;
 import io.protostuff.Schema;
 import io.protostuff.runtime.RuntimeSchema;

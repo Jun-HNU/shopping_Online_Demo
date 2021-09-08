@@ -1,6 +1,6 @@
 package com.hnu.learn.kafka.chapter3;
 
-import com.heima.kafka.ConsumerClientConfig;
+import com.hnu.learn.kafka.ConsumerClientConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.TopicPartition;
