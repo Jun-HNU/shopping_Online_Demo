@@ -1,11 +1,9 @@
 package com.hnu.learn.kafka.chapter1;
 
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.clients.producer.*;
 
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
@@ -35,14 +33,36 @@ public class ProducerFastStart {
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
         ProducerRecord<String, String> record = new ProducerRecord<>(topic, "Kafka-demo-001", "hello, Kafka!");
         try {
-            Future<RecordMetadata> send = producer.send(record);
-            RecordMetadata recordMetadata = send.get();
-            System.out.println("partition:" + recordMetadata.partition()
-                    + ";topic:" + recordMetadata.topic()
-                    + ";offset:" + recordMetadata.offset());
+            //同步发送
+            KafkaSynchronousSend( producer,record );
+            //异步发送，就是不阻塞当前业务，重新起一个线程来做发送任务
+            KafkaAsynchronousSend( producer,record );
         } catch (Exception e) {
             e.printStackTrace();
         }
         producer.close();
+    }
+
+    public static void KafkaSynchronousSend(KafkaProducer<String, String> producer,ProducerRecord<String, String> record ) throws ExecutionException, InterruptedException {
+
+        Future<RecordMetadata> send = producer.send(record);
+        RecordMetadata recordMetadata = send.get();
+        System.out.println("partition:" + recordMetadata.partition()
+                + ";topic:" + recordMetadata.topic()
+                + ";offset:" + recordMetadata.offset());
+    }
+    public static void KafkaAsynchronousSend(KafkaProducer<String, String> producer,ProducerRecord<String, String> record ){
+
+        producer.send(record, new Callback() {
+            public void onCompletion(RecordMetadata metadata, Exception exception) {
+                if (exception == null) {
+                    System.out.println(    "partition:" + metadata.partition()
+                            + ";topic:" + metadata.topic()
+                            + ";offset:" + metadata.offset());
+                }
+            }
+        });
+
+
     }
 }
