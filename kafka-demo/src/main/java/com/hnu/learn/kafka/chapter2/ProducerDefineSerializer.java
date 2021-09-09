@@ -1,5 +1,6 @@
 package com.hnu.learn.kafka.chapter2;
 
+import com.hnu.learn.kafka.chapter3.ProtostuffSerializer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -19,8 +20,8 @@ public class ProducerDefineSerializer {
                 StringSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                 CompanySerializer.class.getName());
-//        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
-//                ProtostuffSerializer.class.getName());
+       /*properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
+                ProtostuffSerializer.class.getName());*/
         properties.put("bootstrap.servers", brokerList);
 
         KafkaProducer<String, Company> producer =

@@ -46,7 +46,8 @@ public class KafkaProducerAnalysis {
 
         // 自定义拦截器使用
         props.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG,ProducerInterceptorPrefix.class.getName());
-        props.put(ProducerConfig.ACKS_CONFIG,0);
+        //props.put(ProducerConfig.ACKS_CONFIG,0);
+        props.put(ProducerConfig.ACKS_CONFIG,"0");
         return props;
     }
 
