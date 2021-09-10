@@ -32,8 +32,8 @@ public class ProducerFastStart {
         // KafkaProducer 线程安全
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
         ProducerRecord<String, String> record = new ProducerRecord<>(topic, "Kafka-demo-001", "hello, Kafka!");
+        //ProducerRecord<String, String> record2 = new ProducerRecord<>(topic, 0, System.currentTimeMillis() - 10 * 500, "Kafka-demo-001", "hello, Kafka!->超时");
         ProducerRecord<String, String> record2 = new ProducerRecord<>(topic, 0, System.currentTimeMillis() - 10 * 1000, "Kafka-demo-001", "hello, Kafka!->超时");
-
         try {
             producer.send(record);
             producer.send(record2);
