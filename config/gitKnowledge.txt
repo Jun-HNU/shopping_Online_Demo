@@ -45,3 +45,55 @@ github  https://github.com/gozhuyinglong/blog-demos.git (push)
 输出添加远程仓库命令： git remote add <remote> <url>
 
 git remote add gitee https://gitee.com/HJ_HNU/shopping_-online_-demo.git
+1.4 多个远程仓库的推送/拉取
+
+有了多个远程仓库，推送和拉取再也不能像以前那样git push和git pull了，必须得加上远程仓库的名称，以识别操作的是哪个远程仓库。命令如下： git push <remote> <branch>、git pull <remote> <branch>：
+
+git push github main
+git pull github main
+
+git push gitee main
+git pull gitee main
+
+如果不想每次操作都带着分支，需要将本地分支与远程分支进行关联： git branch --set-upstream-to=<remote>/<remote_branch> <local_branch>
+
+git branch --set-upstream-to=gitee/main main
+
+关联后就可以不指定分支了
+
+git push github
+git pull github
+
+git push gitee
+git pull gitee
+
+1.5 移除一个远程仓库
+
+如果想要移除一个远程仓库，可以使用下面命令： git remote remove <remote>或git remote rm <remote>
+
+git remote remove gitee
+
+执行移除远程仓库后，该仓库在本地的所有分支与配置信息也会一并删除。
+2. 常见错误及解决方案
+
+在执行上面操作当然不是一帆风顺的，如果你遇到一些错误，这里可能有你想要的答案。
+2.1 提示未指定分支
+
+当在拉取时报下面错误：
+
+You asked to pull from the remote 'gitee', but did not specify
+a branch. Because this is not the default configured remote
+for your current branch, you must specify a branch on the command line.
+
+表示本地分支与远程分支未做关联，进行关联一下即可，执行下面命令： git branch --set-upstream-to=<remote>/<remote_branch> <your_branch>
+
+git branch --set-upstream-to=gitee/main main
+
+2.2 没有存储库的权限
+
+当执行推送操作时，提示下面信息：
+
+remote: You do not have permission push to this repository
+fatal: unable to access 'https://gitee.com/gozhuyinglong/blog-demos.git/': The requested URL returned error: 403
+
+表示没有远程仓库的权限，应该首先查看远程仓库是否公开，再检查本地账号和密码是否正确。
