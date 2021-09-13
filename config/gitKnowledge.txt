@@ -69,7 +69,7 @@ git pull gitee
 
 
 git remote set-url --add gitee https://gitee.com/HJ_HNU/shopping_-online_-demo.git
-git remote set-url --add github https://gitee.com/HJ_HNU/shopping_-online_-demo.git
+git remote set-url --add github https://github.com/Jun-HNU/shopping_Online_Demo.git
 
 1.5 移除一个远程仓库
 
