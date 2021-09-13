@@ -105,6 +105,3 @@ fatal: unable to access 'https://gitee.com/gozhuyinglong/blog-demos.git/': The r
 表示没有远程仓库的权限，应该首先查看远程仓库是否公开，再检查本地账号和密码是否正确。
 
 
-git remote add gitee https://gitee.com/HJ_HNU/shopping_-online_-demo.git
-git push gitee
-git remote remove gitee
