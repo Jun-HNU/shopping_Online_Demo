@@ -45,6 +45,7 @@ github  https://github.com/gozhuyinglong/blog-demos.git (push)
 输出添加远程仓库命令： git remote add <remote> <url>
 
 git remote add gitee https://gitee.com/HJ_HNU/shopping_-online_-demo.git
+git remote add github https://github.com/Jun-HNU/shopping_Online_Demo.git
 1.4 多个远程仓库的推送/拉取
 
 有了多个远程仓库，推送和拉取再也不能像以前那样git push和git pull了，必须得加上远程仓库的名称，以识别操作的是哪个远程仓库。命令如下： git push <remote> <branch>、git pull <remote> <branch>：
