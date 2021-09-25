@@ -22,7 +22,22 @@ public class ProducerTransactionSend {
                 StringSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                 StringSerializer.class.getName());
+
+
+        /*只能保证 Producer 在单个会话内不丟不重，如果 Producer 出现意外挂掉再重启是无法保证的
+（幂等性情况下，是无法获取之前的状态信息，因此是无法做到跨会话级别的不丢不重）;
+        幂等性不能跨多个 Topic-Partition，只能保证单个 partition 内的幂等性，当涉及多个 TopicPartition 时，这中间的状态并没有同步。*/
+        //properties.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true");
+       // properties.put("acks", "all"); // 当 enable.idempotence 为 true，这里默认为 all
+
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, brokerList);
+
+
+        /*
+        幂等性并不能跨多个分区运作，而事务可以弥补这个缺憾，事务可以保证对多个分区写入操作的原子
+性。操作的原子性是指多个操作要么全部成功，要么全部失败，不存在部分成功部分失败的可能。
+为了实现事务，应用程序必须提供唯一的transactionalId，这个参数通过客户端程序来进行设定。
+         */
         properties.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG, transactionId);
 
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);

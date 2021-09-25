@@ -14,3 +14,6 @@ kafka的自定义
 1.自定义拦截器
 2.分区分配策略
 3.自定义offset的存储,将offset提交与业务操作放大到一个事务中。
+
+Kafka的Message存储采用了分区(partition)，分段(LogSegment)和稀疏索引这几个手段来达
+到了高效性。
