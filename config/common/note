@@ -56,3 +56,9 @@ javabean的返回值，是xml的class类型，java bean定义时的的函数名�
 
 2.springboot在整合中间件时，先去看看org.springframework.boot.autoconfigure包下
 的源码，有助于整合。
+
+
+jobs
+ps -ef | grep 'java'只筛选出java进程
+
+netstat -ntlp查看进程对应的端口
