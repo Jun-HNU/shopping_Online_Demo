@@ -13,9 +13,20 @@ public class KafkaProducer {
    @Autowired
     private KafkaTemplate<String, Object> kafkaTemplate;
     // 发送消息
-    @GetMapping("/kafka/norma  l/{message}")
+    @GetMapping("/kafka/normal/{message}")
     public void sendMessage1(@PathVariable("message") String normalMessage) {
-        kafkaTemplate.send("topic1", normalMessage);
+
+        KafkaTemplate.executeInTransaction(t -> {
+            t.send("topic1", normalMessage);
+            if ("error".equals(normalMessage)) {
+                throw new RuntimeException("input is error");
+            }
+            t.send("topic1", normalMessage+ " anthor");
+           // return true;
+        });
+
+
+       // kafkaTemplate.send("topic1", normalMessage);
 
 
     }

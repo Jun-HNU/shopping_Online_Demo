@@ -28,6 +28,7 @@
         <module>ELK-client</module>
         <module>RedisDemo</module>
         <module>strom-demo</module>
+        <module>Leetcode</module>
 
     </modules>
 
