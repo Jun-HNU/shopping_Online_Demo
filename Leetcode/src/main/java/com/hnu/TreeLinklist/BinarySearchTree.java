@@ -7,7 +7,7 @@ package com.hnu.TreeLinklist;
 建立索引：指定树的最大高度，读取索引文件，将offset导入缓存数据结构，
 对于任意keystrng计算得到两个hashcode,第一hashcode1用于建立二叉查找树节点，再根据
 第二个hashcode2将offset插入节点中的跳表。
-当树的高度达到最大高度时，取hashcode1的二分之后插入已有树节点的跳表中，跳表出现相同hash时插入
+当树的高度达到最大高度时，标记最大节点的hashcode，对最大的节点的hashcode值取模，已有树节点的跳表中，跳表出现相同hash时插入
 已有节点右侧。
 
 缓存索引数据结构采用hash+二叉查找树，树节点存放包含偏移量值的链表，在搜索一条数据时，
