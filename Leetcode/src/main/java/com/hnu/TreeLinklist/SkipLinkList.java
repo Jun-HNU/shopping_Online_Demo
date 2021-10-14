@@ -6,11 +6,11 @@ import java.util.Stack;
 class SkipLinkNode<T>
 {
 
-    int key;//二次hash计算得到的
+    int ListIndex;//二次hash计算得到的
     T value;
     SkipLinkNode right,down;//左右上下四个方向的指针
-    public SkipLinkNode (int key,T value) {
-        this.key=key;
+    public SkipLinkNode (int ListIndex,T value) {
+        this.ListIndex=ListIndex;
         this.value=value;
 
     }
@@ -28,10 +28,10 @@ public class SkipLinkList <T> {
         headNode=new SkipLinkNode(Integer.MIN_VALUE,null);
         highLevel=0;
     }
-    public SkipLinkNode search(int key) {
+    public SkipLinkNode search(int ListIndex) {
         SkipLinkNode team=headNode;
         while (team!=null) {
-            if(team.key==key)
+            if(team.ListIndex==ListIndex)
             {
                 return  team;
             }
@@ -39,7 +39,7 @@ public class SkipLinkList <T> {
             {
                 team=team.down;
             }
-            else if(team.right.key>key)//需要下降去寻找
+            else if(team.right.ListIndex>ListIndex)//需要下降去寻找
             {
                 team=team.down;
             }
@@ -51,19 +51,19 @@ public class SkipLinkList <T> {
         return null;
     }
 
-    public void delete(int key)//删除不需要考虑层数
+    public void delete(int ListIndex)//删除不需要考虑层数
     {
         SkipLinkNode team=headNode;
         while (team!=null) {
             if (team.right == null) {//右侧没有了，说明这一层找到，没有只能下降
                 team=team.down;
             }
-            else if(team.right.key==key)//找到节点，右侧即为待删除节点
+            else if(team.right.ListIndex==ListIndex)//找到节点，右侧即为待删除节点
             {
                 team.right=team.right.right;//删除右侧节点
                 team=team.down;//向下继续查找删除
             }
-            else if(team.right.key>key)//右侧已经不可能了，向下
+            else if(team.right.ListIndex>ListIndex)//右侧已经不可能了，向下
             {
                 team=team.down;
             }
@@ -75,9 +75,9 @@ public class SkipLinkList <T> {
     public void add(SkipLinkNode node)
     {
 
-        int key=node.key;
-        SkipLinkNode findNode=search(key);
-        if(findNode!=null)//如果存在这个key的节点
+        int ListIndex=node.ListIndex;
+        SkipLinkNode findNode=search(ListIndex);
+        if(findNode!=null)//如果存在这个ListIndex的节点
         {
             findNode.value=node.value;
             return;
@@ -91,7 +91,7 @@ public class SkipLinkList <T> {
                 stack.add(team);//将曾经向下的节点记录一下
                 team=team.down;
             }
-            else if(team.right.key>key)//需要下降去寻找
+            else if(team.right.ListIndex>ListIndex)//需要下降去寻找
             {
                 stack.add(team);//将曾经向下的节点记录一下
                 team=team.down;
@@ -107,7 +107,7 @@ public class SkipLinkList <T> {
         while (!stack.isEmpty()) {
             //在该层插入node
             team=stack.pop();//抛出待插入的左侧节点
-            SkipLinkNode nodeTeam=new SkipLinkNode(node.key, node.value);//节点需要重新创建
+            SkipLinkNode nodeTeam=new SkipLinkNode(node.ListIndex, node.value);//节点需要重新创建
             nodeTeam.down=downNode;//处理竖方向
             downNode=nodeTeam;//标记新的节点下次使用
             if(team.right==null) {//右侧为null 说明插入在末尾
@@ -139,7 +139,7 @@ public class SkipLinkList <T> {
     }
     public void printList() {
         SkipLinkNode teamNode=headNode;
-        int index=1;
+        int ListIndex=1;
         SkipLinkNode last=teamNode;
         while (last.down!=null){
             last=last.down;
@@ -149,9 +149,9 @@ public class SkipLinkList <T> {
             SkipLinkNode enumLast=last.right;
             System.out.printf("%-8s","head->");
             while (enumLast!=null&&enumNode!=null) {
-                if(enumLast.key==enumNode.key)
+                if(enumLast.ListIndex==enumNode.ListIndex)
                 {
-                    System.out.printf("%-5s",enumLast.key+"->");
+                    System.out.printf("%-5s",enumLast.ListIndex+"->");
                     enumLast=enumLast.right;
                     enumNode=enumNode.right;
                 }
@@ -162,7 +162,7 @@ public class SkipLinkList <T> {
 
             }
             teamNode=teamNode.down;
-            index++;
+            ListIndex++;
             System.out.println();
         }
     }

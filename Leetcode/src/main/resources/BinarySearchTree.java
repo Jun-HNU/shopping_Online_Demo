@@ -1,133 +1,18 @@
-package com.hnu.TreeLinklist;
-
-
-class SerachKeyValue{
-	public static int CountHashCode1(String str)
-	{
-		return str.hashCode();
-	}
-	public static int CountHashCode2(String str){
-		char[] chars = str.toCharArray();
-		int sum=0;
-		for(int i=0; i<chars.length; i++){
-			sum=(int)chars[i]+sum;
-		}
-
-		return sum%1000;
-	}
-	String searchStr;
-	int offset;
-	int hashCode1;
-	int hashCode2;
-
-	public SerachKeyValue(String searchStr, int offset, int hashCode1, int hashCode2) {
-		this.searchStr = searchStr;
-		this.offset = offset;
-		this.hashCode1 = hashCode1;
-		this.hashCode2 = hashCode2;
-	}
-
-	public SerachKeyValue(String searchStr, int offset) {
-		this.searchStr = searchStr;
-		this.offset = offset;
-		this.hashCode1 = CountHashCode1(searchStr);
-		this.hashCode2 = CountHashCode2(searchStr);
-	}
-	public String getSearchStr() {
-		return searchStr;
-	}
-
-	public void setSearchStr(String searchStr) {
-		this.searchStr = searchStr;
-	}
-
-	public int getOffset() {
-		return offset;
-	}
-
-	public void setOffset(int offset) {
-		this.offset = offset;
-	}
-
-	public int getHashCode1() {
-		return hashCode1;
-	}
-
-	public void setHashCode1(int hashCode1) {
-		this.hashCode1 = hashCode1;
-	}
-
-	public int getHashCode2() {
-		return hashCode2;
-	}
-
-	public void setHashCode2(int hashCode2) {
-		this.hashCode2 = hashCode2;
-	}
-}
-
-class TreeNode {
-	int TreeIndex;//第一次hash
-	SkipLinkList<SerachKeyValue> skipLinkList;
+//https://blog.csdn.net/sheepmu/article/details/38407221
+class TreeNode
+{
+	int value;
 	TreeNode parent;
 	TreeNode left;
 	TreeNode right;
-
-	public int getValue() {
-		return TreeIndex;
-	}
-
-	public void setValue(int TreeIndex) {
-		this.TreeIndex = TreeIndex;
-	}
-
-	public SkipLinkList<SerachKeyValue> getSkipLinkList() {
-		return skipLinkList;
-	}
-
-	public void setSkipLinkList(SkipLinkList<SerachKeyValue> skipLinkList) {
-		this.skipLinkList = skipLinkList;
-	}
-
-	public TreeNode getParent() {
-		return parent;
-	}
-
-	public void setParent(TreeNode parent) {
-		this.parent = parent;
-	}
-
-	public TreeNode getLeft() {
-		return left;
-	}
-
-	public void setLeft(TreeNode left) {
-		this.left = left;
-	}
-
-	public TreeNode getRight() {
-		return right;
-	}
-
-	public void setRight(TreeNode right) {
-		this.right = right;
-	}
-
-	public TreeNode(SerachKeyValue serachKeyValue, TreeNode parent, TreeNode left, TreeNode right) {
-		this.TreeIndex = serachKeyValue.hashCode1;
+	public TreeNode(int value, TreeNode parent, TreeNode left, TreeNode right) {
+		this.value = value;
 		this.parent = parent;
 		this.left = left;
 		this.right = right;
-		skipLinkList = new SkipLinkList<SerachKeyValue>();
-		skipLinkList.add(new SkipLinkNode(serachKeyValue.hashCode2, serachKeyValue));
-
 	}
 
-}
 
-public class BinarySearchTree{
-
-	private TreeNode root;
 	//求BST的最小值
 	public TreeNode  getMin(TreeNode root)
 	{
@@ -192,9 +77,9 @@ public class BinarySearchTree{
 	{
 		if(root==null)
 			return root;
-		if(val<root.TreeIndex)
+		if(val<root.value)
 			return searchRec(root.left,val);
-		else if(val>root.TreeIndex)
+		else if(val>root.value)
 			return searchRec(root.right,val);
 		else
 			return root;
@@ -206,33 +91,14 @@ public class BinarySearchTree{
 			return root;
 		while(root!=null)
 		{
-			if(val<root.TreeIndex)
+			if(val<root.value)
 				root=root.left;
-			else if(val>root.TreeIndex)
+			else if(val>root.value)
 				root=root.right;
 			else
 				return root;
 		}
 		return root;
-	}
-
-	public int search(TreeNode root ,String serachKey)
-
-	{
-		int val =SerachKeyValue.CountHashCode1(serachKey);
-		int val2 =SerachKeyValue.CountHashCode2(serachKey);
-		if(root==null)
-			return 0;
-		while(root!=null)
-		{
-			if(val<root.TreeIndex)
-				root=root.left;
-			else if(val>root.TreeIndex)
-				root=root.right;
-		}
-		SkipLinkNode skipLinkNode = root.skipLinkList.search(val2);
-		SerachKeyValue serachKeyValue = (SerachKeyValue) skipLinkNode.value;
-		return serachKeyValue.offset;
 	}
 
 
@@ -242,9 +108,9 @@ public class BinarySearchTree{
 	{
 		if(root==null)
 			root=x;
-		else if(x.TreeIndex<root.TreeIndex)
+		else if(x.value<root.value)
 			root.left=insertRec(root.left,  x);
-		else if(x.TreeIndex>root.TreeIndex)
+		else if(x.value>root.value)
 			root.right=insertRec(root.right,  x);
 		return root;
 	}
@@ -252,54 +118,20 @@ public class BinarySearchTree{
 	public TreeNode insert(TreeNode root,TreeNode x)
 	{
 		if(root==null)
-
 			root=x;
 		TreeNode p=null;//需要记录父节点
 		while(root!=null)//定位插入的位置
 		{
 			p=root;//记录父节点
-			if(x.TreeIndex<root.TreeIndex)
+			if(x.value<root.value)
 				root=root.left;
 			else
 				root=root.right;
 		}
 		x.parent=p;//定位到合适的页节点的空白处后，根据和父节点的大小比较插入合适的位置
-		if(x.TreeIndex<p.TreeIndex)
+		if(x.value<p.value)
 			p.left=x;
-		else if(x.TreeIndex>p.TreeIndex)
-			p.right=x;
-
-		return root;
-	}
-
-	public TreeNode insert(TreeNode root,SerachKeyValue serachKeyValue)
-	{//插入之前先查找
-		TreeNode serachResultNode = search(root, serachKeyValue.getHashCode1());
-		TreeNode x=null;
-		if (serachResultNode==null)
-		{
-			x=new TreeNode(serachKeyValue,null,null,null);
-		}
-		else
-		{
-			serachResultNode.skipLinkList.add(new SkipLinkNode(serachKeyValue.hashCode2,serachKeyValue));
-			x=serachResultNode;
-		}
-		if(root==null)
-			root=x;
-		TreeNode p=null;//需要记录父节点
-		while(root!=null)//定位插入的位置
-		{
-			p=root;//记录父节点
-			if(serachKeyValue.getHashCode1()<root.TreeIndex)
-				root=root.left;
-			else
-				root=root.right;
-		}
-		x.parent=p;//定位到合适的页节点的空白处后，根据和父节点的大小比较插入合适的位置
-		if(x.TreeIndex<p.TreeIndex)
-			p.left=x;
-		else if(x.TreeIndex>p.TreeIndex)
+		else if(x.value>p.value)
 			p.right=x;
 		return root;
 	}
@@ -311,12 +143,12 @@ public class BinarySearchTree{
 		TreeNode p=null;
 		while(root!=null)//定位到需要删除的节点
 		{
-			if(x.TreeIndex<root.TreeIndex)
+			if(x.value<root.value)
 			{
 				p=root;//记录父节点
 				root=root.left;
 			}
-			else if(x.TreeIndex>root.TreeIndex)
+			else if(x.value>root.value)
 			{
 				p=root;//记录父节点
 				root=root.right;
@@ -369,9 +201,9 @@ public class BinarySearchTree{
 						rMinP=rMin;
 						rMin=rMin.left;
 					}
-					int rootVtemp=root.TreeIndex;//值交换
-					root.TreeIndex=rMin.TreeIndex;
-					rMin.TreeIndex=rootVtemp;
+					int rootVtemp=root.value;//值交换
+					root.value=rMin.value;
+					rMin.value=rootVtemp;
 					//删除rMin位置的节点，此时此位置的值已是待删节点的值
 					if(rMinP.left==rMin)
 						rMinP.left=rMin.right;
@@ -432,3 +264,8 @@ public class BinarySearchTree{
 	}
 
 }
+
+public class BinarySearchTree{
+  
+
+} 

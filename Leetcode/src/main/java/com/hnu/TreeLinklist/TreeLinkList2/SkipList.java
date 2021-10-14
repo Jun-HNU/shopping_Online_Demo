@@ -1,4 +1,4 @@
-package com.hnu.TreeLinklist;
+package com.hnu.TreeLinklist.TreeLinkList2;
 //https://zhuanlan.zhihu.com/p/339750543
 import java.util.Random;
 import java.util.Stack;
