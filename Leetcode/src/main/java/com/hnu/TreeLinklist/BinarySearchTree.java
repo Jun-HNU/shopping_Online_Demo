@@ -1,5 +1,19 @@
 package com.hnu.TreeLinklist;
+/*
+数据和索引存放在不同的Linux文件中，索引文件中存放每条数据对应的key
+和偏移量，数据以key-value形式存放在大文件中，设计轻量级的key-Value缓存索引，
+用共享库的形式嵌入服务端本地程序中，提高服务器被访问文件资源的定位效率。
 
+建立索引：指定树的最大高度，读取索引文件，将offset导入缓存数据结构，
+对于任意keystrng计算得到两个hashcode,第一hashcode1用于建立二叉查找树节点，再根据
+第二个hashcode2将offset插入节点中的跳表。
+当树的高度达到最大高度时，取hashcode1的二分之后插入已有树节点的跳表中，跳表出现相同hash时插入
+已有节点右侧。
+
+缓存索引数据结构采用hash+二叉查找树，树节点存放包含偏移量值的链表，在搜索一条数据时，
+key经过两次hash计算后，先二叉树查找后折半查找可快速定位到key对应的偏移量值。
+
+ */
 
 class SerachKeyValue{
 	public static int CountHashCode1(String str)
