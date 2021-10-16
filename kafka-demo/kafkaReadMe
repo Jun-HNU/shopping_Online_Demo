@@ -17,3 +17,8 @@ kafka的自定义
 
 Kafka的Message存储采用了分区(partition)，分段(LogSegment)和稀疏索引这几个手段来达
 到了高效性。
+
+
+
+
+

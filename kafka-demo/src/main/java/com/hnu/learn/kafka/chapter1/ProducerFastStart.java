@@ -1,6 +1,8 @@
 package com.hnu.learn.kafka.chapter1;
 
+import org.apache.kafka.clients.KafkaClient;
 import org.apache.kafka.clients.producer.*;
+import org.apache.kafka.common.serialization.Serializer;
 
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
@@ -10,6 +12,7 @@ import java.util.concurrent.Future;
  * Kafka 消息生产者
  */
 public class ProducerFastStart {
+    //
     // Kafka集群地址
     private static final String brokerList = "hadoop-101:9092,hadoop-102:9092,hadoop-103:9092";
     // 主题名称-之前已经创建
