@@ -23,11 +23,11 @@ public class SeekDemo extends ConsumerClientConfig {
         consumer.subscribe(Arrays.asList(topic));
         // timeout参数设置多少合适？太短会使分区分配失败，太长又有可能造成一些不必要的等待
         consumer.poll(Duration.ofMillis(2000));
-        // 获取消费者所分配到的分区
+        // 获取消费者所分配到的所有分区
         Set<TopicPartition> assignment = consumer.assignment();
         System.out.println(assignment);
         for (TopicPartition tp : assignment) {
-            // 参数partition表示分区，offset表示指定从分区的哪个位置开始消费
+            // 参数partition表示分区，offset表示指定从分区的哪个位置开始消费，这里表示从每个分区的offset为10 的位置开始消费。
             consumer.seek(tp, 10);
         }
 //        consumer.seek(new TopicPartition(topic,0),10);

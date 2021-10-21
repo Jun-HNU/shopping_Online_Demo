@@ -20,6 +20,8 @@ public class OffsetCommitAsyncCallback extends ConsumerClientConfig {
 
     public static void main(String[] args) {
         Properties props = initConfig();
+        //将自动提交改为false,后面每次消费后，手动调用consumer的commitAsync()或commitSync();方法进行提交。
+        props.put(org.apache.kafka.clients.consumer.ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Arrays.asList(topic));
 
@@ -52,6 +54,8 @@ public class OffsetCommitAsyncCallback extends ConsumerClientConfig {
             }
         } finally {
             try {
+//在业务中写异步提交，在最后写同步提交。提高offset提交的成功率。
+                //无论是否发生异常都会执行这里同步提交，提高offset提交的成功率。
                 consumer.commitSync();
             } finally {
                 consumer.close();

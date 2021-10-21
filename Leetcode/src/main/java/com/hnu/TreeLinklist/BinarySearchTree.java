@@ -218,12 +218,12 @@ public class BinarySearchTree{
 	{
 		if(root==null)
 			return root;
-		while(root!=null)
+		while(root.left!=null||root.right!=null)
 		{
 			if(val<root.TreeIndex)
 				root=root.left;
 			else if(val>root.TreeIndex)
-				root=root.right;
+				root= root.right;
 			else
 				return root;
 		}
@@ -237,8 +237,12 @@ public class BinarySearchTree{
 		int val2 =SerachKeyValue.CountHashCode2(serachKey);
 		if(root==null)
 			return 0;
-		while(root!=null)
+		while(val!=root.TreeIndex)
 		{
+			if(root.right!=null&&root.left!=null)
+			{
+
+			}
 			if(val<root.TreeIndex)
 				root=root.left;
 			else if(val>root.TreeIndex)

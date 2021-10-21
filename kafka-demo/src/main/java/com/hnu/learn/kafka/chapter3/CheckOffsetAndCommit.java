@@ -48,9 +48,11 @@ public class CheckOffsetAndCommit {
             }
             List<ConsumerRecord<String, String>> partitionRecords = records.records(tp);
             lastConsumedOffset = partitionRecords.get(partitionRecords.size() - 1).offset();
+            //records从broker暴露给comsumer最大能消费到的offset。
             consumer.commitSync();//同步提交消费位移
         }
         System.out.println("comsumed offset is " + lastConsumedOffset);
+        //kafka 让cumsumer自己维护offset,所以cumsumer自己能取到最新提交对应的offset.
         OffsetAndMetadata offsetAndMetadata = consumer.committed(tp);
         System.out.println("commited offset is " + offsetAndMetadata.offset());
         long posititon = consumer.position(tp);

@@ -14,6 +14,16 @@ High Watermark(HW)：已经成功备份到其他 replicas 中的最新一条数�
 
 2.kafka中的position概念
 
+kafka顺序读写磁盘
+Partition中的分段存储Segment，对应log和index文件。（0.8版本之前的kafka没有timeindex文件）, 是kafka的具体时间日志
+主要分成数据文件xxx.log,和索引文件xxx.index, 两个文件相对应的， 前缀相同。
+segment文件命名规则：partition全局的第一个segment从0开始，后续每个segment文件名为上一个segment文件最后一条消息的offset值。数值最大为64位long大小，19位数字字符长度，没有数字用0填充。
+以及.timeindex文件。
+offset-position.png以索引文件中的3，497为例，依次在数据文件中表示第3个message（在全局partition表示第368772个message）、
+以及该消息的物理偏移地址为497。把index文件(index file)的（3,497）与log文件（data file) 的（Message368772，497）相对应 ，
+两个数字又分别代表消息的偏移量与对应的物理地址偏移量。
+索引文件中的position 不是消息的offset, 而是message在segment中的物理位置。
+先由文件名找到segment的起始偏移量（partition下的第多少条消息），再由offset找到实际偏移量，与消息体中的偏移量和物理地址对应。
 
 3.kafka的同一个topic（逻辑概念）对应了num.partition个分区，每个分区对应一个文件夹，以topic名作为前缀，分区数作为后缀。
 每个分区下有leader-epoch-checkpoint和.snapshot文件以及一个或者多个segment,每个segment对应.log和.index、.timeindex三个文件。
@@ -225,3 +235,12 @@ kafak消费者消费记录后会将offset信息生产到一个cumsumer_offset的
 kafak宕机后的重连。
 
 
+消费者群主，群组协调器，再均衡监听器
+生产者是线程安全的
+消费者是线程不安全的，所以必须为每个线程创建一个消费者实例。
+如果一个消费者，用多个线程来跑，会有线程安全问题。
+
+分区在均衡时，发生重复消费和数据丢失。
+例如：自动提交时，offset是每个5s提交一次，在第三秒时发生再均衡，数据被消费了，但offset没来的及提交。
+此时在均衡后接着上次最新提交的位置开始消费，就会导致数据被重复消费。
+同步提交时，如果提交发生阻塞，后来逻辑无法进行，程序会一直阻塞在哪里，异步提交就可以解决这类问题。
