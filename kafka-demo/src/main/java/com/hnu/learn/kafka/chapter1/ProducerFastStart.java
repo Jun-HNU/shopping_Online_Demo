@@ -54,6 +54,17 @@ public class ProducerFastStart {
                 + ";topic:" + recordMetadata.topic()
                 + ";offset:" + recordMetadata.offset());
     }
+
+//    public static void fun()
+//    {//https://blog.csdn.net/yfm081616/article/details/115609669
+//        ListenableFuture<SendResult<String, Object>> future = kafkaTemplate.send(topic, o);
+//        future.addCallback(result -> logger.info("生产者成功发送消息到topic:{} partition:{}的消息", result.getRecordMetadata().topic(), result.getRecordMetadata().partition()),
+//                ex -> logger.error("生产者发送消失败，原因：{}", ex.getMessage()));
+//
+//    }
+
+
+
     public static void KafkaAsynchronousSend(KafkaProducer<String, String> producer,ProducerRecord<String, String> record ){
 
         producer.send(record, new Callback() {

@@ -27,6 +27,7 @@ public class CommitSyncInRebalance extends ConsumerClientConfig {
             public void onPartitionsRevoked(Collection<TopicPartition> partitions) {
                 // 劲量避免重复消费
                 //当发生在均衡时，会被这个函数监听到，这里对当前是offset做一个及时同步的提交，避免重复消费。
+                //手动同步提交
                 consumer.commitSync(currentOffsets);
             }
 
@@ -46,6 +47,7 @@ public class CommitSyncInRebalance extends ConsumerClientConfig {
                     currentOffsets.put(new TopicPartition(record.topic(), record.partition()),
                             new OffsetAndMetadata(record.offset() + 1));
                 }
+                //手动手异步同步提交
                 consumer.commitAsync(currentOffsets, null);
             }
         } finally {
