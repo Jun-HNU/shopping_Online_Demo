@@ -29,6 +29,7 @@
         <module>RedisDemo</module>
         <module>strom-demo</module>
         <module>Leetcode</module>
+        <module>jps-jstate-jstack-jmap-MAT-test</module>
 
     </modules>
 
