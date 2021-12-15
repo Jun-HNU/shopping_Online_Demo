@@ -30,6 +30,7 @@
         <module>strom-demo</module>
         <module>Leetcode</module>
         <module>jps-jstate-jstack-jmap-MAT-test</module>
+        <module>improve-thread-pool</module>
 
     </modules>
 

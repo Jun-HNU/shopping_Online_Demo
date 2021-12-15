@@ -10,13 +10,7 @@ public class 正整数开根号 {
     public static int fun(int a){
 
         if(a<1) return 0;
-        /*for(int i=0;i<a/2;i++)
-        {
-            if(i*i==a)
-            {
-                return i;
-            }
-        }*/
+
 
         int max=a;
         int min=0;
