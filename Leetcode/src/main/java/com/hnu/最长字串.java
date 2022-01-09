@@ -89,4 +89,33 @@ public class 最长字串 {
 
     }
 
+    public static int lengthOfLongestSubstring3(String s) {
+        Map charIndex =new HashMap<Character,Integer>();
+        int begin=0;//最新字串的开始下角标
+        int maxLenght=0;//字串长度
+        int i=0;
+        for(;i<s.length();i++)
+        {
+            //字符不在charIndex 的map中，或者之前的字串中出现过。即，当前字符串在begin 开始的最新字串中没有出现过。
+            if(charIndex.get(s.charAt(i))==null||(Integer)charIndex.get(s.charAt(i))<begin)//
+            {
+                charIndex.put(s.charAt(i),i);//记录字符和脚标
+                if(i-begin+1>maxLenght) maxLenght=i-begin+1;//没有重复字符时，相减后加1，即为长度
+            }
+            else{
+
+                if(i-begin>maxLenght) maxLenght=i-begin;//此时i和begin角标对应的字符相同。直接相减即为长度。
+//maxStr.put(i-begin,s.substring(begin,i));
+                begin = (Integer)charIndex.get(s.charAt(i))+1;//更新最新字串下角标开始的位置。
+                charIndex.put(s.charAt(i),i);
+
+            }
+        }
+        // if(i-begin>maxLenght)
+
+        return maxLenght;
+
+
+    }
+
 }

@@ -49,7 +49,7 @@ public class 堆 {
     {
         buildTree(c,c.length);
 
-        for (int i=c.length-1;i>0;i--){
+        for (int i=c.length-1;i>0;i--){//依次将堆顶的元素与最后一个元素及交换，每交换一次进行一次堆重建。
             swap(c,0,i);
             buildTree(c,i);
         }
@@ -58,7 +58,8 @@ public class 堆 {
 
 
     public static void main(String[] args) {
-        int []  a={10,4,5,6,7};
+        ///int []  a={10,4,5,6,7};
+        int []  a={3,2,1,5,6,4};
         sortTree(a);
         System.out.println(Arrays.toString(a));
 
