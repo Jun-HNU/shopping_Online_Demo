@@ -21,24 +21,7 @@ class TreeNode {
 
 
 
-class Solution {
-    public void fun(TreeNode root, List<Integer> list)
-{
-if (root==null) return;
-list.add(root.val);
-fun(root.left,list);
-fun(root.right,list); 
-
-}
-    public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> list = new LinkedList<Integer>();
-        
-fun(root,list);
-
-return list;
-    }
-
-
+class 二叉树的前序遍历{
 
 
     public List<Integer> preorderTraversal2(TreeNode root) {
@@ -64,4 +47,28 @@ return list;
         return list;
 
     }
+
+
+
+
+    public void fun(TreeNode root, List<Integer> list)
+{
+if (root==null) return;
+list.add(root.val);
+fun(root.left,list);
+fun(root.right,list); 
+
+}
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> list = new LinkedList<Integer>();
+        
+fun(root,list);
+
+return list;
+    }
+
+
+
+
+
 }

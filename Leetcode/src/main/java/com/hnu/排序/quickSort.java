@@ -17,7 +17,7 @@ public class quickSort {
 
        int right=h;//右指针开始的位置，将会向左移动
        int left=l;//左指针开始的位置，将会向左移动
-       int index=left;//坑位选第一个元素，这个坑位上的元素将被覆盖。
+       int index=left;//坑位指针，这个坑位上的元素将被覆盖，选第一个元素.谁覆盖当前坑位，这个指针就更新为谁。
        int p=a[index];//将坑位的数先记录下来，也就是基准值，后面再把这个数放到坑上。
 
        while(left<right)
@@ -28,11 +28,12 @@ public class quickSort {
                if(a[right]<=p)
                {
 
-                   a[index]=a[right];//找到之后将这个比基准值小的数放到坑上
-                   index=right;//更新坑的角标，等待一个比基准值大的数，覆盖当前坑位。
+                   a[index]=a[right];//找到之后将这个比基准值小的数放到坑上，此时数组中
+                   // 角标为index 对应元素与角标为right对应元素值相同。
+                   index=right;//更新坑坑位指针，等待一个比基准值大的数，覆盖当前坑位。
 
                    left++;//左指针从上一个坑位的下一个位置开始遍历。
-                   break;
+                   break;//找到一个比基准值小的数时跳出循环
 
                }
                right--;//找到一个小于基准值之前，右指针一直向左移动
