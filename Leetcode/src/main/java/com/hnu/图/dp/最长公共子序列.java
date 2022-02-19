@@ -1,4 +1,4 @@
-package com.hnu.dp;
+package com.hnu.图.dp;
 
 import java.util.Random;
 

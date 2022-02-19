@@ -16,30 +16,23 @@ public class 正整数开根号 {
         int min=0;
         int mid=0;
         int result=0;
-        while(min<max)
+        while(min<=max)
         {
             mid=(max+min)/2;
-            //System.out.println(mid);
-            if(max==min||max==min+1)
-                return -1;
             result=mid*mid;
             if(result==a)
                 return mid;
             if(result<a)
             {
-                min=(max+min)/2;
-                /*if(min>=a/2)
-                    break;*/
+                min=mid+1;
             }
             if(result>a)
             {
-                max=(max+min)/2;
-                /*if(max>=a/2)
-                    break;*/
+                max=mid-1;
             }
 
         }
-        return 0;
+        return -1;
 
     }
 

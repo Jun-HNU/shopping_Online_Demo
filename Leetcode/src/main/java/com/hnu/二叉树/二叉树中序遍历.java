@@ -23,6 +23,7 @@ public class 二叉树中序遍历 {
             TreeNode cur = stack.pop();    // 弹出栈顶元素
             // 如弹出元素不为空 则继续访问其孩子节点
             if(cur != null){
+                //因为是后续遍历，所以要让后被处理的节点先入栈
                 // 用的栈结构 所以入栈顺序要与遍历顺序相反 中序遍历：左根右，入栈时候是：右根左。
                 if(cur.right != null)
                     stack.push(cur.right); // 添加非空右节点
@@ -37,6 +38,8 @@ public class 二叉树中序遍历 {
                 if(cur.left != null)
                     stack.push(cur.left);  // 添加非空左节点
             }else{
+
+                //若弹出的元素为空表明，下一个节点为父节点的子树的节点已经全部入栈了。
                 // 若弹出元素为空，则继续弹出下一个元素
                 cur = stack.pop();          // 取出处理元素
                 res.add(cur.val);           // 加入结果列表
