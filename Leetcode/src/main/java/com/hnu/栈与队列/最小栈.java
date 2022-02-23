@@ -19,7 +19,6 @@ package com.hnu.栈与队列;
  */
 
 
-import java.util.LinkedList;
 import java.util.Stack;
 
 public class 最小栈 {
