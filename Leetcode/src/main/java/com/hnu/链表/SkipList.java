@@ -103,12 +103,12 @@ public class SkipList {
                 preLine = preLine.next;
             }
             preNewNode.next = preLine.next;
-            preLine.next = preNewNode;
+            preLine.next = preNewNode;//当前层新增的节点
             //如果不是第一层，则建立下一层的新节点
             if (preNewNode.level>0){
                 Node newNode = new  Node(val,preNewNode.level-1);
                 preNewNode.down = newNode;//往下指向新节点
-                preNewNode = newNode;
+                preNewNode = newNode;//更新指针
             }
             //往下层建立新节点
             preLine = preLine.down;
