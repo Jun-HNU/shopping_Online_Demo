@@ -10,7 +10,7 @@ tar -zxvf nginx-1.12.2.tar.gz
 --http-log-path=/var/log/nginx/access.log \
 --with-http_gzip_static_module \
 --http-client-body-temp-path=/var/temp/nginx/client \
---http-proxy-temp-path=/var/temp/nginx/proxy \
+--http-com.hnu.DesignPattern.proxy-temp-path=/var/temp/nginx/com.hnu.DesignPattern.proxy \
 --http-fastcgi-temp-path=/var/temp/nginx/fastcgi \
 --http-uwsgi-temp-path=/var/temp/nginx/uwsgi \
 --http-scgi-temp-path=/var/temp/nginx/scgi \
