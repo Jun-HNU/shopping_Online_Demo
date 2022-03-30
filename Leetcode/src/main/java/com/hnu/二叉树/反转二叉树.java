@@ -1,11 +1,15 @@
-/*
-package com.hnu;
+
+package com.hnu.二叉树;
 
 import com.hnu.二叉树.TreeNode;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class 反转二叉树 {
 
-    public static TreeNode fun(TreeNode head)
+    /*public static TreeNode fun(TreeNode head)
 
 
     {
@@ -26,8 +30,7 @@ public class 反转二叉树 {
 
         return null;
 
-    }
-
+    }*/
 
 }
-*/
+

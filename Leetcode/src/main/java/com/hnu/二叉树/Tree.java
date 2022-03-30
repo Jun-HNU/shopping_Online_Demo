@@ -1,20 +1,10 @@
 package com.hnu.二叉树;
 
-class Node{
-    Node left;
-    Node right;
-    String key;
-    int value;
-    Node(String str)
-    {
-        this.key=str;
 
-    }
-}
 
 public class Tree {
 
-    public static void traverse(Node node){
+ /*   public static void traverse(Node node){
 if(node!=null) {
 
     traverse(node.left);
@@ -32,7 +22,7 @@ if(node!=null) {
         a.right=c;
         traverse(a);
 
-    }
+    }*/
 
 
 }
