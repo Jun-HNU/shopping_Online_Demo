@@ -1,4 +1,4 @@
-package com.hnu;
+package com.hnu.特殊数;
 
 public class 正整数开根号 {
 
@@ -18,7 +18,8 @@ public class 正整数开根号 {
         int result=0;
         while(min<=max)
         {
-            mid=(max+min)/2;
+           // mid=(max+min)/2;
+            mid=min+(max-min)/2;//避免数字溢出
             result=mid*mid;
             if(result==a)
                 return mid;
