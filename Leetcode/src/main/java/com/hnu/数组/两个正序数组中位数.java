@@ -1,4 +1,4 @@
-package com.hnu;
+package com.hnu.数组;
 
 public class 两个正序数组中位数 {
     //时间复杂度o(log2(m+n)),空间复杂度o(1),一般执行二分查找法时间复杂度为log2(m+n)

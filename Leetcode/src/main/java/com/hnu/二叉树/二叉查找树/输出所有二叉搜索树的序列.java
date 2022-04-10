@@ -13,6 +13,13 @@ import java.util.Map;
 那么 从1 ～ n，随机选择k做根节点，那么 左子树一定是 1 ～ k-1, 右子树一定是 k+1 ~ n
 
 
+
+二叉树的特点是，中序遍历是升序的。
+而树的中序遍历特点是，[左子树，根节点，右子树],
+左子树的所有节点值比根节点小，
+左子树的所有节点值比根节点大
+
+
  */
 
 
@@ -60,7 +67,7 @@ public class 输出所有二叉搜索树的序列 {
             //如果当根节点值为i,那么右子树所有节点值肯定比i大,所以左子树的区间为[i+1，hi]
             List<TreeNode> rightTree = build(i + 1, hi);
             // 3、给 root 节点穷举所有左右子树的组合。
-            for (TreeNode left : leftTree) {
+            for (TreeNode left : leftTree) {//这里是一个构建树的过程
                 for (TreeNode right : rightTree) {
                     // i 作为根节点 root 的值
                     TreeNode root = new TreeNode(i);

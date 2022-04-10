@@ -1,4 +1,4 @@
-package com.hnu;
+package com.hnu.数组;
 
 public class 寻找两个有序数组的第k小的数 {
     //递归

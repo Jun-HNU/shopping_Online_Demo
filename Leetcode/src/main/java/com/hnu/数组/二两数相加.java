@@ -1,4 +1,4 @@
-package com.hnu;
+package com.hnu.数组;
 class ListNode {
      int val;
      ListNode next;

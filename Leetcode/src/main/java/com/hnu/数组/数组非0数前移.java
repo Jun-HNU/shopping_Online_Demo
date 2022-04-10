@@ -1,4 +1,4 @@
-package com.hnu;
+package com.hnu.数组;
 
 public class 数组非0数前移 {
 
