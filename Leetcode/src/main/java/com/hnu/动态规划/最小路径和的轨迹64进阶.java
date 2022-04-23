@@ -1,6 +1,6 @@
 package com.hnu.动态规划;
 
-public class 最小路径和的轨迹 {
+public class 最小路径和的轨迹64进阶 {
 
 
 
@@ -137,7 +137,7 @@ public class 最小路径和的轨迹 {
 
 
     public static void main(String[] args) {
-     new 最小路径和的轨迹().minPathSum(
+     new 最小路径和的轨迹64进阶().minPathSum(
         new int [][]{{1,3,1},{1,5,1},{4,2,1}});
     }
 }

@@ -1,6 +1,6 @@
 package com.hnu.动态规划;
 
-public class 最小路径和 {
+public class 最小路径和64 {
 
 
     public int minPathSum(int[][] grid) {

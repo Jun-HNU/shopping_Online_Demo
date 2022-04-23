@@ -32,13 +32,16 @@ public class 多少种二叉查找树 {
         public int help(int lo,int hi)
         {
             //base case
-            // 如果 为1，表示空，也是一种
+            //这里表示非法的节点，也就是当前节点的左子树或右子树为空
+            // 直接返回，也是边界。
             if(lo>hi) return 1;
             if(mem[lo][hi]!=0) return mem[lo][hi];
             int res=0;
             for (int i = lo; i <=hi; i++) {
                 int left=help(lo,i-1);
                 int right=help(i+1,hi);
+                //这里理解为当前节点的左子树的种数 和 右子树的种数相乘 即为以
+                // 当前节点作为根节点的种数
                 res+=left*right;
             }
             mem[lo][hi]=res;

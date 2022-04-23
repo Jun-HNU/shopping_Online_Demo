@@ -50,6 +50,8 @@ public class 输出所有二叉搜索树的序列 {
         LinkedList<TreeNode> res = new LinkedList<>();
 
         // base case
+        //这里表示非法的节点，也就是当前节点的左子树或右子树为空
+        // 直接返回，也是边界。
         if (lo > hi) {
             res.add(null);
             return res;
