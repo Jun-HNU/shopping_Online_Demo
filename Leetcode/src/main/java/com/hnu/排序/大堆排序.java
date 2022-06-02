@@ -2,6 +2,7 @@ package com.hnu.排序;
 
 import java.util.Arrays;
 
+//https://www.cnblogs.com/ericz2j/p/10907920.html
 public class 大堆排序 {
 
     public static void swap(int [] c, int i, int j)
@@ -15,18 +16,17 @@ public class 大堆排序 {
     public static void adjust(int [] c,int p,int end)
     {
 
-        //单次调整内部是，叶子节点的遍历是自上而下。
-        for (int i = 2*p+1; i <end ; i++) {
-            int k=i;
+        //单次调整内部是，叶子节点i的遍历是自上而下。
+        for (int i = 2*p+1; i <end ; i=2*i+1) {
             if(i+1<end)
             {
 
                 if(c[i+1]>c[i])
-                    k=i+1;
+                i++;
             }
-            if(c[k]>c[p]) {
-                swap(c, k, p);
-                p=k;//将“调整节点”进行更新。
+            if(c[i]>c[p]) {
+                swap(c, i, p);
+                p=i;//将“调整节点”进行更新。
             }
             else
                 ////由于调整节点是自减，遍历节点是自加的。
@@ -57,7 +57,7 @@ public class 大堆排序 {
         //这里由于是排序，在已经是大堆结构后，堆顶的元素是最大的。
         // 只需要将堆顶元素与堆的最后一个节点元素进行交换，并缩小堆结构的边界范围，继续调整为堆结构
         //直到最终的堆结构只剩下一个元素，那么数组将变得有序了
-        for (int i = c.length-1; i >=0 ; i--) {
+        for (int i = c.length-1; i >0 ; i--) {//由于是交换，i自减到1就行，交换堆顶和堆尾的元素
             swap(c,i,0);
           //由于只是根节点被换了，只需要将根节点作为调整节点，完成一轮调整即可恢复堆结构。
             //并且是前数组的前i个节点进行堆的堆的调整

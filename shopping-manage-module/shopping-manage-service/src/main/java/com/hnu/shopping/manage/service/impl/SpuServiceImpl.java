@@ -17,6 +17,7 @@ import java.util.List;
 @Service
 public class SpuServiceImpl implements SpuService {
 
+
     @Autowired
     PmsProductInfoMapper pmsProductInfoMapper;
 
