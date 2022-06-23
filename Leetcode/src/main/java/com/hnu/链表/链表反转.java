@@ -1,9 +1,6 @@
 package com.hnu.链表;
 
-class ListNode{
-    int value;
-    ListNode next;
-}
+
 
 public class 链表反转 {
 

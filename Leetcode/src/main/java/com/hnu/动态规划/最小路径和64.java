@@ -1,5 +1,8 @@
 package com.hnu.动态规划;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class 最小路径和64 {
 
 
@@ -33,6 +36,9 @@ public class 最小路径和64 {
         return s[m-1][n-1];
 
     }
+
+
+
 
 
 
