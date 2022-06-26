@@ -1,4 +1,4 @@
-package com.hnu.动态规划;
+package com.hnu.动态规划DP;
 
 class 出界的路径数576_2 {
     private Integer[][][] memo;

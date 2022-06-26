@@ -1,4 +1,4 @@
-package com.hnu.动态规划;
+package com.hnu.动态规划DP;
 
 public class 不同路径63 {
 

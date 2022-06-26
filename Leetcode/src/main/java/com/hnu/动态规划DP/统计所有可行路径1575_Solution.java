@@ -1,4 +1,4 @@
-package com.hnu.动态规划;
+package com.hnu.动态规划DP;
 
 class 统计所有可行路径1575_Solution {
 /*

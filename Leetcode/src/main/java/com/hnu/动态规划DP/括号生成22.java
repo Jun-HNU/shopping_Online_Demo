@@ -1,10 +1,8 @@
-package com.hnu.动态规划;
+package com.hnu.动态规划DP;
 
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 /*
 ()

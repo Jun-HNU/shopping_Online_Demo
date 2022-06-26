@@ -12,6 +12,8 @@ p != q
 p 和 q 均存在于给定的二叉树中。
 */
 
+
+    //一颗子树上父节点与叶节点的反向推到
     public  TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 
 

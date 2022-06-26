@@ -1,7 +1,4 @@
-package com.hnu.动态规划;
-
-import java.util.LinkedList;
-import java.util.List;
+package com.hnu.动态规划DP;
 
 public class 最小路径和64 {
 

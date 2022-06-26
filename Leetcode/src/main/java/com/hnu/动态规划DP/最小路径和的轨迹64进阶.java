@@ -1,4 +1,4 @@
-package com.hnu.动态规划;
+package com.hnu.动态规划DP;
 
 public class 最小路径和的轨迹64进阶 {
 

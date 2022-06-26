@@ -1,4 +1,4 @@
-package com.hnu.图.回溯深度优先搜索;
+package com.hnu.回溯;
 
 
 import java.util.ArrayList;
@@ -33,6 +33,10 @@ public class 全排列{
             tmp.remove(tmp.size() - 1);
         }
     }
+
+
+
+
 
     List<List<Integer>> res = new LinkedList<>();
     LinkedList<Integer> ls=new LinkedList<>();
