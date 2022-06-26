@@ -24,10 +24,12 @@ public class 全排列{
             res.add(new ArrayList<>(tmp));
             return;
         }
+        //
         for (int i = 0; i < nums.length; i++) {
             if (visited[i] == 1) continue;
             visited[i] = 1;//记录节点是否有被访问过
             tmp.add(nums[i]);
+            //temp表示到达下一节点
             backtrack(res, nums, tmp, visited);
             visited[i] = 0;
             tmp.remove(tmp.size() - 1);

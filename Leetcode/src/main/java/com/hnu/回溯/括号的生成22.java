@@ -20,6 +20,7 @@ public class 括号的生成22 {
             return;
         }
         left++;
+        //left+1表示到达下一节点
         dfs(result,n,sb+"(",left,right);
         left--;
         right++;
