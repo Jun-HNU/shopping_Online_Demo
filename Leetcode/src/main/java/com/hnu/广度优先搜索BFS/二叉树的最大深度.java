@@ -1,4 +1,6 @@
-package com.hnu.二叉树;
+package com.hnu.广度优先搜索BFS;
+
+import com.hnu.二叉树.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

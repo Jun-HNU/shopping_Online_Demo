@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @WebListener
-public class SessionListener implements HttpSessionListener {
+public class  SessionListener implements HttpSessionListener {
 
     private static final Logger logger = LoggerFactory.getLogger(SessionListener.class);
 

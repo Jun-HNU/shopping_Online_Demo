@@ -1,4 +1,4 @@
-package com.hnu.动态规划DP;
+package com.hnu.回溯;
 
 
 import java.util.LinkedList;
@@ -56,7 +56,7 @@ for each (1,n-1)
 "("+Ti+")","()"+Ti,Ti+"()"
 
  */
-class 括号生成22 {
+class 括号生成_22 {
 
     public List<String> generateParenthesis(int n) {
     //求包含"(",")"的全排列
