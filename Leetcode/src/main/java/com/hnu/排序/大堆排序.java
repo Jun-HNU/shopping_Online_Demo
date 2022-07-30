@@ -39,8 +39,7 @@ public class 大堆排序 {
 
         }
 
-
-
+//  1 3 2 4
 
    public static int [] heapSort(int [] c)
     {

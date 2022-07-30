@@ -5,6 +5,7 @@ public class 求数组的top2的元素的下角标 {
     public  static void min2(int [] r)
     {
 
+       new Thread();
 
         int mF= Integer.MAX_VALUE;
         int mS= Integer.MAX_VALUE;

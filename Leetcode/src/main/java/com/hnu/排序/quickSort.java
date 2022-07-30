@@ -9,7 +9,7 @@ public class quickSort {
 
   public static void quickSort(int [] a,int l,int h)//l 和 h 分别为下限和上限
 
-
+//选择一个基准值，当不满足左边的元素比基准值小，或者右边的元素比基准值大时，交换元素的位置
    {
        if (l>=h)//何时跳出递归函数的条件。
            return;
@@ -63,7 +63,7 @@ public class quickSort {
    }
     public static void main(String[] args) {
 
-
+//实现升序
        int []  a={10,4,5,6,7};
         quickSort(a,0,a.length-1);
         System.out.println(Arrays.toString(a));

@@ -1,61 +1,101 @@
 package com.hnu.链表;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.HashMap;
 
-class LRUCache {
-
-    int size;
-    Map<Integer,Integer> map=new LinkedHashMap<>();
-
-   LRUCache(int size)
-    {
-        this.size=size;
+class DlinkNode{
+    DlinkNode pre;//方便在删除和添加时找到相邻的节点
+    DlinkNode next;
+    int value;
+    int key;
+    public DlinkNode(){};
+    public DlinkNode(int key,int value){
+        this.key=key;
+        this.value=value;
     }
-
-
-   public int get(int key)
-   {
-       if(!map.containsKey(key)) return -1;
-       makeKeyRecently(key);
-       return map.get(key);
-   }
-
-   public void makeKeyRecently(int key)
-   {
-       Integer value = map.get(key);
-       map.remove(key);
-       map.put(key,value);
-   }
-   public void put(int key,int value)
-   {
-
-       if(map.containsKey(key))
-       {
-
-           map.put(key,value);
-           makeKeyRecently(key);
-
-       }
-       else
-       {
-           if (size==map.size())
-           {
-               Map.Entry<Integer, Integer> entry = map.entrySet().iterator().next();
-               map.remove(entry.getKey());
-           }
-
-           map.put(key,value);
-       }
-
-
-   }
-
 }
 
-/**
- * Your LRUCache object will be instantiated and called as such:
- * LRUCache obj = new LRUCache(capacity);
- * int param_1 = obj.get(key);
- * obj.put(key,value);
- */
+public class LRUCache {
+    HashMap<Integer,DlinkNode> cache;//在hashMap中记录key和节点
+    int capacity=0;//HashMap容量
+    DlinkNode head;
+    DlinkNode tail;
+    //构造方法
+    public LRUCache(int capacity) {
+        this.capacity=capacity;
+        //使用指定容量初始化HashMap
+        cache=new HashMap<>(capacity);
+        //初始化头尾结点均为空节点
+        head=new DlinkNode();
+        tail=new DlinkNode();
+        head.next=tail;//初始化双向链表的头尾节点，方便操作
+        tail.pre=head;
+    }
+    
+    public int get(int key) {
+        //若当前HashMap中存在该key
+        if(cache.containsKey(key)){
+            //从HashMap中获取对应的结点
+            DlinkNode node=cache.get(key);
+            //将该结点移动到链头
+            moveToHead(node);  
+            return node.value;
+        }else return -1;//当前HashMap中不存在该key，返回-1
+    }
+    
+    public void put(int key, int value) {
+        //若当前HashMap中存在该key
+        if(cache.containsKey(key)){
+            //从HashMap中获取对应的结点
+            DlinkNode node=cache.get(key);
+            //更新该结点的值
+            node.value=value;
+            //将该结点移动到链头
+            moveToHead(node);
+        }else{ //若当前HashMap中不存在该key
+            //首先判断HashMap是否还有多余的容量
+            if(cache.size()==capacity){ //容量不足
+                //从HashMap中删除链尾结点
+                cache.remove(tail.pre.key);//取出双向链表的尾部哑节点，进而取出存放数据的最后一个节点
+                //从链表中删除链尾结点
+                deleteNode(tail.pre);            
+            }
+            //创建一个新的结点
+            DlinkNode node=new DlinkNode(key,value);
+            //添加到链头
+            addNode(node);
+            //添加到HashMap中
+            cache.put(key,node);
+        }
+    }
+    
+    //删除结点
+// 1 2
+// 2 3
+// 3 4
+    void deleteNode(DlinkNode node){
+        //将当前节点的前一个节点，作为给当前节点下一个节点的前一个节点
+        //当前节点的下一个节点，作为当前节点前一个节点的下一个节点
+
+
+        //删除某个节点，只需将
+        node.next.pre=node.pre;
+        node.pre.next=node.next;
+    }
+    //在链头添加结点
+// head 1
+// 1 2
+    void addNode(DlinkNode node){
+        node.next=head.next;
+        head.next.pre=node;
+
+        head.next=node;
+        node.pre=head;
+    }
+    //将指定结点移动到链头
+    void moveToHead(DlinkNode node){
+        //删除该结点
+        deleteNode(node);
+        //在链头添加该结点
+        addNode(node);
+    }
+}
