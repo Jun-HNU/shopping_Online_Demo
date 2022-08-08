@@ -55,6 +55,7 @@ public class 根据中序后续建树 {
     ) {
         if(inorderEnd < inorderStart || postorderEnd < postorderStart) return null;
 
+        //后续遍历的最后一个值为中间节点。
         int root = post[postorderEnd];//根据后序遍历结果，取得根节点的值
         //根节点在中序数组的角标，它的左侧为左子树节点值集合，右侧为右子树节点值集合
         int rootIndexInInorderArray = inorderArrayMap.get(root);

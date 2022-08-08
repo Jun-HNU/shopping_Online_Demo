@@ -21,8 +21,11 @@ public class 求子集 {
     }
     public static void def(int[] nums,int start,List<Integer> ls)
     {
+
         //前序遍历
         if(ls!=null)
+
+
             res.add(new ArrayList<>(ls));//记录路径
         if(start>=nums.length) return;//遍历到最后一层退出
         for (int i = start; i <nums.length ; i++) {

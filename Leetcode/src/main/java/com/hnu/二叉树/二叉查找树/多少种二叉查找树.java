@@ -38,8 +38,8 @@ public class 多少种二叉查找树 {
             if(mem[lo][hi]!=0) return mem[lo][hi];
             int res=0;
             for (int i = lo; i <=hi; i++) {
-                int left=help(lo,i-1);
-                int right=help(i+1,hi);
+                int left=help(lo,i-1);//左子树的节点比当前小，取值为（lo,i-1）
+                int right=help(i+1,hi);//右子树的节点比当前大，取值区间为（i+1,hi）
                 //这里理解为当前节点的左子树的种数 和 右子树的种数相乘 即为以
                 // 当前节点作为根节点的种数
                 res+=left*right;
@@ -61,7 +61,7 @@ public class 多少种二叉查找树 {
         // 设置函数G(n)为n个节点的不同二叉上搜索树的种类
         // 设置f(n)为以节点[1, n]为根节点的BST种类
         // ==> 推导G(n) = f(1) + f(2) + f(3) +....+ f(n)
-        // 假设以3为节点,3的左节点有1和2，有节点有[4, n]个
+        // 假设以3为节点,3的左节点有1和2，右节点有[4, n]个
         // ==> 推导f(i) 取决于左右子树的种类,一对多 f(i) = G(i-1) * G(n - i)
 
         int[] dp = new int[n + 1];
