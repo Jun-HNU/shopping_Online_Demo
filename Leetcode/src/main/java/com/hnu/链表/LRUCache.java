@@ -1,6 +1,14 @@
 package com.hnu.链表;
 
 import java.util.HashMap;
+/*
+链表：定义前后节点，key和value
+hashMap：key 为 链表节点的key,value 为节点本身。
+LRU对外暴露的函数中，操作都是key和value.
+hashmap根据key可以找到node，
+而node 的操作LRUCache其他函数封装起来 的。
+
+ */
 
 class DlinkNode{
     DlinkNode pre;//方便在删除和添加时找到相邻的节点
