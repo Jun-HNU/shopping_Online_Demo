@@ -42,6 +42,7 @@ import org.eclipse.jetty.webapp.JettyWebXmlConfiguration;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.LoggerFactory;
 
+
 public class Main {
 
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(Main.class);
